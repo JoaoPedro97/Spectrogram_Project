@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\SKILL\\Documents\\GitHub\\Spectrogram_Project\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\SKILL\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Aplication.py||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Desenvolvimento_Spectrogram\\Aplication.py||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\SKILL\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Devep.py||{8B382828-6202-11D1-8870-0000F87579D2}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Desenvolvimento_Spectrogram\\Devep.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\SKILL\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Aplication.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Desenvolvimento_Spectrogram\\Aplication.py||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\SKILL\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\CodigoPolido.py||{8B382828-6202-11D1-8870-0000F87579D2}",
@@ -21,7 +21,7 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 164,
+          "DockedWidth": 199,
           "SelectedChildIndex": 2,
           "Children": [
             {
@@ -34,13 +34,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "Devep.py",
               "DocumentMoniker": "C:\\Users\\SKILL\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Devep.py",
               "RelativeDocumentMoniker": "Desenvolvimento_Spectrogram\\Devep.py",
               "ToolTip": "C:\\Users\\SKILL\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Devep.py",
               "RelativeToolTip": "Desenvolvimento_Spectrogram\\Devep.py",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAjAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAEwAAABHAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
               "WhenOpened": "2024-07-11T16:51:09.798Z",
               "EditorCaption": ""
@@ -48,7 +48,7 @@
           ]
         },
         {
-          "DockedWidth": 236,
+          "DockedWidth": 201,
           "SelectedChildIndex": 1,
           "Children": [
             {
@@ -61,18 +61,17 @@
               "RelativeToolTip": "Desenvolvimento_Spectrogram\\CodigoPolido.py",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAHcAAAAdAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
-              "WhenOpened": "2024-07-11T14:56:26.301Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-11T14:56:26.301Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Aplication.py",
               "DocumentMoniker": "C:\\Users\\SKILL\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Aplication.py",
               "RelativeDocumentMoniker": "Desenvolvimento_Spectrogram\\Aplication.py",
               "ToolTip": "C:\\Users\\SKILL\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Aplication.py",
               "RelativeToolTip": "Desenvolvimento_Spectrogram\\Aplication.py",
-              "ViewState": "AQIAABAAAAAAAAAAAAAcwBoAAAAcAAAA",
+              "ViewState": "AQIAAJAAAAAAAAAAAAAAABcAAAAiAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
               "WhenOpened": "2024-07-11T14:55:04.897Z",
               "EditorCaption": ""
