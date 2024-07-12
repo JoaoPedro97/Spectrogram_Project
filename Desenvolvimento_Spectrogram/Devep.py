@@ -1,11 +1,19 @@
+from asyncio import selector_events
+from logging import root
+from msilib.schema import ListBox
+from re import match
 import tkinter as tk
-from tkinter import Menu, Toplevel, messagebox, Entry, Label, Button, Frame
+from tkinter import LEFT, RIGHT, TOP, LabelFrame, Listbox, Menu, Toplevel, messagebox, Entry, Label, Button, Frame
+from typing import Text
 from RsInstrument.RsInstrument import RsInstrument
 import os
 from datetime import datetime
 
+
 # Variável global para armazenar o IP
 global_ip = ""
+global_COM_Option = ["TCP/IP", "GPIB", "USB"]
+
 
 def save_log(idn, driver, visa_manufacturer, instrument_full_name):
     log_dir = "logs"
@@ -135,13 +143,83 @@ class CommandTestWindow(tk.Toplevel):
             messagebox.showerror("Error", "IP not set. Please connect to an instrument first.")
 
 class SettingsWindow(tk.Toplevel):
+    # variaveis
+
     def __init__(self, master):
         super().__init__(master)
-        self.geometry("300x200")
+        self.geometry("450x300")
         self.title("Configuracoes")
 
-        self.create_widgets()
+        self.Conect()
+        #self.create_widgets()
 
+    def Conect(self):
+        #Espaco de conexao-Menu
+        self.Select_COM = tk.StringVar(self)
+        self.Select_COM.set(global_COM_Option[0]) #Define TCP/IP como padrao (no futuro, mudar para o que esta setado pelo usuário)
+        self.container_conect = tk.LabelFrame(self, text="Conecxoes/protocolo de comunicacao", padx=25, pady=10)
+        self.container_conect.pack(side=tk.TOP)
+        
+        self.contant_Conection = tk.Frame(self.container_conect)
+        self.contant_Conection.pack(side=tk.TOP)
+        
+        self.LabelTipoCom = tk.Label(self.contant_Conection, text="Tipo de conexao", font=("Calibri", "10"))
+        self.LabelTipoCom.pack(side=tk.LEFT)
+        
+        self.blankFrame_1 = tk.Frame(self.contant_Conection)
+        self.blankFrame_1.config(width=250)
+        self.blankFrame_1.pack(side=tk.RIGHT)
+
+        self.option_menu = tk.OptionMenu(self.container_conect,self.Select_COM,*global_COM_Option)
+        self.option_menu.config(width = 20)
+        self.option_menu.pack(side=tk.LEFT)
+        
+        self.blankFrame_2 = tk.Frame(self.container_conect)
+        self.blankFrame_2.config(width=25)
+        self.blankFrame_2.pack(side=tk.BOTTOM)
+
+        self.AplicarButton = tk.Button(self.container_conect,text="Aplicar",command=self.MSG, font=("Calibri", "10"), width=15)
+        self.AplicarButton.pack(side=tk.RIGHT)
+
+        #Espaco de teste COM
+        self.container_TEST = tk.LabelFrame(self, text="Teste COM", padx=25, pady=10)
+        self.container_TEST.pack(side=tk.TOP)
+        
+        self.Espaco_1 = tk.Frame(self.container_TEST)
+        self.Espaco_1.pack(side=tk.TOP)
+
+        self.Texto_Inf = tk.Label(self.Espaco_1,text="Selecao para testes de envio de comando:",font=("Calibri", "10"))
+        self.Texto_Inf.pack(side=tk.LEFT)
+        
+        self.blankFrame_null_1 = tk.Frame(self.Espaco_1)
+        self.blankFrame_null_1.config(width=110)
+        self.blankFrame_null_1.config(height=25)
+        self.blankFrame_null_1.pack(side=tk.BOTTOM)
+
+        self.EnvioPresetButton = tk.Button(self.container_TEST,text="Envio de preset",command=self.open_command_test_window, font=("Calibri", "10"), width=15)
+        self.EnvioPresetButton.pack(side=tk.LEFT)
+        
+        self.blankFrame_null = tk.Frame(self.container_TEST)
+        self.blankFrame_null.config(width=230)
+        self.blankFrame_null.pack(side=tk.BOTTOM)
+
+        self.AplicarButton = tk.Button(self.container_TEST,text="Envio de comandos",command=self.MSG, font=("Calibri", "10"), width=15)
+        self.AplicarButton.pack(side=tk.RIGHT)
+
+        #Espaco de config dos containers
+        self.container_Config = tk.LabelFrame(self, text="Configuracao containers", padx=165, pady=10)
+        self.container_Config.pack(side=tk.TOP)
+        
+        self.Espaco_2 = tk.Frame(self.container_Config)
+        self.Espaco_2.pack(side=tk.TOP)
+        
+        self.InfoLabel = tk.Label(self.container_Config,text="Em breve...")
+        self.InfoLabel.pack(side=tk.LEFT)
+        
+    def MSG(self): #mensagem para oprimeiro botao: Este codigo e temporario
+        Option_select = self.Select_COM.get() 
+        messagebox.showinfo("Success", f"Program config to {Option_select} for connect")
+           
     def create_widgets(self):
         self.test_command_button = tk.Button(self, text="Teste de Envio de Comandos", command=self.open_command_test_window)
         self.test_command_button.pack(pady=20)
