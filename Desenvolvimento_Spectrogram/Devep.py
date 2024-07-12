@@ -1,10 +1,9 @@
 from asyncio import selector_events
 from logging import root
-from msilib.schema import ListBox
+from msilib.schema import CheckBox, ListBox
 from re import match
 import tkinter as tk
-from tkinter import LEFT, RIGHT, TOP, LabelFrame, Listbox, Menu, Toplevel, messagebox, Entry, Label, Button, Frame
-from typing import Text
+from tkinter import LEFT, RIGHT, TOP, Checkbutton, LabelFrame, Listbox, Menu, Toplevel, Widget, messagebox, Entry, Label, Button, Frame
 from RsInstrument.RsInstrument import RsInstrument
 import os
 from datetime import datetime
@@ -89,33 +88,139 @@ class ConnectionWindow(tk.Toplevel):
         self.lb.insert(tk.END, 'Instrument full name: ' + instrument_full_name)
         self.lb.insert(tk.END, 'Instrument Installed Options: ' + ",".join(self.instr.instrument_options))
         self.lb.insert(tk.END, "Connection Success")
-        self.lb.itemconfig(tk.END, {'fg': 'green'})
+        self.lb.itemconfig(tk.END, {'fg': 'green'})# Janela Connection
 
 class CommandTestWindow(tk.Toplevel):
     def __init__(self, master):
         super().__init__(master)
-        self.geometry("350x200")
+        self.geometry("850x550")
         self.title("Teste de Envio de Comandos")
 
-        self.create_widgets()
+        self.create_widgets_Commandos()
 
-    def create_widgets(self):
-        self.label_rbw = tk.Label(self, text="RBW (kHz):")
-        self.label_rbw.grid(row=0, column=0, padx=10, pady=10)
-        self.entry_rbw = tk.Entry(self)
-        self.entry_rbw.grid(row=0, column=1, padx=10, pady=10)
+    def create_widgets_Commandos(self):
+        self.container_conect = tk.LabelFrame(self, text="Comandos de preset",font = ("Arial","12","bold"))
+        self.container_conect.pack(side=tk.TOP)
+        
+        self.Boxline_1 = tk.Frame(self.container_conect)
+        self.Boxline_1.pack(side=tk.TOP)
+        
+        self.Boxline_2 = tk.Frame(self.container_conect)
+        self.Boxline_2.pack(side=tk.TOP)
+       
+        self.BW_Box() #container com as entradas de RBW e VBW
+        self.Sweep_box() #Container com as Entradas de Sweep
+        self.Frequency_box() #Container com as entradas de Frequencia
 
-        self.label_vbw = tk.Label(self, text="VBW (kHz):")
-        self.label_vbw.grid(row=1, column=0, padx=10, pady=10)
-        self.entry_vbw = tk.Entry(self)
-        self.entry_vbw.grid(row=1, column=1, padx=10, pady=10)
+        
+    def BW_Box(self):
+        # Frame BW - Set de RBW e VBW
+        self.BandWidth_Contains = tk.LabelFrame(self.Boxline_1, text="BW", font=("Calibri", "10", "bold"), padx=25, pady=10)
+        self.BandWidth_Contains.pack(side=tk.LEFT, padx=10, pady=10)
 
-        self.button_reset = tk.Button(self, text="RESET", command=self.reset_instrument)
-        self.button_reset.grid(row=2, column=0, padx=10, pady=10)
+        # linha RBW
+        self.RBW_Label = tk.Label(self.BandWidth_Contains, text="RBW", font=("Calibri", "10"))
+        self.RBW_Label.grid(row=0, column=0, sticky="w", padx=(0, 10))
+        self.EntryRBW = tk.Entry(self.BandWidth_Contains, width=10)
+        self.EntryRBW.grid(row=0, column=1, sticky="e")
+        self.KHz_Label_01 = tk.Label(self.BandWidth_Contains, text="kHz", font=("Calibri", "8"))
+        self.KHz_Label_01.grid(row=0, column=2, sticky="e")
 
-        self.button_max_hold = tk.Button(self, text="Trace: Max Hold", command=self.set_max_hold)
-        self.button_max_hold.grid(row=2, column=1, padx=10, pady=10)
+        # linha VBW
+        self.VBW_Label = tk.Label(self.BandWidth_Contains, text="VBW", font=("Calibri", "10"))
+        self.VBW_Label.grid(row=1, column=0, sticky="w", padx=(0, 10))
+        self.EntryVBW = tk.Entry(self.BandWidth_Contains, width=10)
+        self.EntryVBW.grid(row=1, column=1, sticky="e")
+        self.KHz_Label_02 = tk.Label(self.BandWidth_Contains, text="kHz", font=("Calibri", "8"))
+        self.KHz_Label_02.grid(row=1, column=2, sticky="e")
 
+        # linha Sweep Time
+        self.SweepTimeLabel = tk.Label(self.BandWidth_Contains, text="Sweep Time", font=("Calibri", "10"))
+        self.SweepTimeLabel.grid(row=2, column=0, sticky="w", padx=(0, 10))
+        self.EntrySweepTime = tk.Entry(self.BandWidth_Contains, width=10)
+        self.EntrySweepTime.grid(row=2, column=1, sticky="e")
+        self.Segundos_Sweep = tk.Label(self.BandWidth_Contains, text="Seg", font=("Calibri", "8"))
+        self.Segundos_Sweep.grid(row=2, column=2, sticky="e")
+
+        # Configurando as colunas para ajustar o alinhamento
+        self.BandWidth_Contains.grid_columnconfigure(0, weight=1)
+        self.BandWidth_Contains.grid_columnconfigure(1, weight=1)
+        self.BandWidth_Contains.grid_columnconfigure(2, weight=1)
+        
+    def Sweep_box(self):
+        # Frame Sweep
+        self.Sweep_Contains = tk.LabelFrame(self.Boxline_1, text="Sweep", font=("Calibri", "10", "bold"), padx=25, pady=5)
+        self.Sweep_Contains.pack(side=tk.LEFT, padx=10, pady=10)
+
+        # linha 1 Sweep continuous
+        self.ContinuosSweepLabel = tk.Label(self.Sweep_Contains, text="Continuous Sweep", font=("Calibri", "10"))
+        self.ContinuosSweepLabel.grid(row=0, column=0, sticky="w", padx=(0, 10))
+        self.Cont_Sweep_Mark = tk.Checkbutton(self.Sweep_Contains)
+        self.Cont_Sweep_Mark.grid(row=0, column=1, sticky="e")
+
+        # linha 2 Single Sweep
+        self.SingleSweepLabel = tk.Label(self.Sweep_Contains, text="Single Sweep", font=("Calibri", "10"))
+        self.SingleSweepLabel.grid(row=1, column=0, sticky="w", padx=(0, 10))
+        self.Single_Sweep_Mark = tk.Checkbutton(self.Sweep_Contains)
+        self.Single_Sweep_Mark.grid(row=1, column=1, sticky="e")
+
+        # linha 3 Sweep cont
+        self.SweepContLabel = tk.Label(self.Sweep_Contains, text="Sweep cont", font=("Calibri", "10"))
+        self.SweepContLabel.grid(row=2, column=0, sticky="w", padx=(0, 10))
+        self.Sweep_Cont_Entry = tk.Entry(self.Sweep_Contains, width=10)
+        self.Sweep_Cont_Entry.grid(row=2, column=1, sticky="e")
+
+        # linha 4 Single Sweep
+        self.Sweep_PointLabel = tk.Label(self.Sweep_Contains, text="Single Sweep", font=("Calibri", "10"))
+        self.Sweep_PointLabel.grid(row=3, column=0, sticky="w", padx=(0, 10))
+        self.Sweep_Point_Entry = tk.Entry(self.Sweep_Contains, width=10)
+        self.Sweep_Point_Entry.grid(row=3, column=1, sticky="e")
+
+        # Configurando as colunas para ajustar o alinhamento
+        self.Sweep_Contains.grid_columnconfigure(0, weight=1)
+        self.Sweep_Contains.grid_columnconfigure(1, weight=1)
+        
+    def Frequency_box(self):
+        # Frame Frequency - Set de CENTER, START e STOP
+        self.Frequency_Contains = tk.LabelFrame(self.Boxline_1, text="FREQ", font=("Calibri", "10", "bold"), padx=25, pady=10)
+        self.Frequency_Contains.pack(side=tk.LEFT, padx=10, pady=10)
+
+        # linha CENTER
+        self.Center_Checkbox = tk.Checkbutton(self.Frequency_Contains)
+        self.Center_Checkbox.grid(row=0, column=0, sticky="w")
+        self.Center_Label = tk.Label(self.Frequency_Contains, text="CENTER", font=("Calibri", "10"))
+        self.Center_Label.grid(row=0, column=1, sticky="w", padx=(0, 10))
+        self.Center_Entry = tk.Entry(self.Frequency_Contains, width=10)
+        self.Center_Entry.grid(row=0, column=2, sticky="e")
+        self.Center_MHz_Label = tk.Label(self.Frequency_Contains, text="MHz", font=("Calibri", "8"))
+        self.Center_MHz_Label.grid(row=0, column=3, sticky="e")
+
+        # linha START
+        self.Start_Checkbox = tk.Checkbutton(self.Frequency_Contains)
+        self.Start_Checkbox.grid(row=1, column=0, sticky="w")
+        self.Start_Label = tk.Label(self.Frequency_Contains, text="START", font=("Calibri", "10"))
+        self.Start_Label.grid(row=1, column=1, sticky="w", padx=(0, 10))
+        self.Start_Entry = tk.Entry(self.Frequency_Contains, width=10)
+        self.Start_Entry.grid(row=1, column=2, sticky="e")
+        self.Start_MHz_Label = tk.Label(self.Frequency_Contains, text="MHz", font=("Calibri", "8"))
+        self.Start_MHz_Label.grid(row=1, column=3, sticky="e")
+
+        # linha STOP
+        self.Stop_Checkbox = tk.Checkbutton(self.Frequency_Contains)
+        self.Stop_Checkbox.grid(row=2, column=0, sticky="w")
+        self.Stop_Label = tk.Label(self.Frequency_Contains, text="STOP", font=("Calibri", "10"))
+        self.Stop_Label.grid(row=2, column=1, sticky="w", padx=(0, 10))
+        self.Stop_Entry = tk.Entry(self.Frequency_Contains, width=10)
+        self.Stop_Entry.grid(row=2, column=2, sticky="e")
+        self.Stop_MHz_Label = tk.Label(self.Frequency_Contains, text="MHz", font=("Calibri", "8"))
+        self.Stop_MHz_Label.grid(row=2, column=3, sticky="e")
+
+        # Configurando as colunas para ajustar o alinhamento
+        self.Frequency_Contains.grid_columnconfigure(0, weight=1)
+        self.Frequency_Contains.grid_columnconfigure(1, weight=1)
+        self.Frequency_Contains.grid_columnconfigure(2, weight=1)
+        self.Frequency_Contains.grid_columnconfigure(3, weight=1)
+        
     def reset_instrument(self):
         if global_ip:
             try:
@@ -140,7 +245,7 @@ class CommandTestWindow(tk.Toplevel):
             except Exception as e:
                 messagebox.showerror("Error", f"Failed to set max hold.\n{e}")
         else:
-            messagebox.showerror("Error", "IP not set. Please connect to an instrument first.")
+            messagebox.showerror("Error", "IP not set. Please connect to an instrument first.") # Janela de comando para teste
 
 class SettingsWindow(tk.Toplevel):
     # variaveis
@@ -150,10 +255,9 @@ class SettingsWindow(tk.Toplevel):
         self.geometry("450x300")
         self.title("Configuracoes")
 
-        self.Conect()
-        #self.create_widgets()
+        self.Connect()
 
-    def Conect(self):
+    def Connect(self):
         #Espaco de conexao-Menu
         self.Select_COM = tk.StringVar(self)
         self.Select_COM.set(global_COM_Option[0]) #Define TCP/IP como padrao (no futuro, mudar para o que esta setado pelo usuário)
@@ -225,7 +329,7 @@ class SettingsWindow(tk.Toplevel):
         self.test_command_button.pack(pady=20)
 
     def open_command_test_window(self):
-        CommandTestWindow(self)
+        CommandTestWindow(self) # Janela de configuracoes
 
 class MainApp:
     def __init__(self, master):
