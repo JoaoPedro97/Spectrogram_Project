@@ -16,7 +16,7 @@ def measure_frequency():
     return float(frequency)
 
 # Configuracao inicial
-tuned_frequency = "467500000.0"
+tuned_frequency = "469975000.0"
 data = []
 var = 0
 # Loop de medicao
@@ -32,7 +32,7 @@ try:
 
         # Salvar os dados em um CSV
         df = pd.DataFrame(data, columns=["Tuned Frequency", "RF Frequency", "Time", "Num"])
-        df.to_csv("frequency_stability_TESTE-467-5.csv", index=False)
+        df.to_csv("frequency_stability_469975000_GMSK_12k5Hz.csv", index=False)
         
         
         
