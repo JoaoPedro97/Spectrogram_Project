@@ -1,0 +1,3 @@
+Index;Date;Time;Tensao (V);Corrente (A);Potencia (W);Potencia (VA);Potencia (VAR);Fator de Potencia;Angulo (Grau);Frequencia (Hz);Energia (Wh);Energia (Wh+)
+0;2024-08-02;13:47:27;126.07;2.93;359.97;369.75;84.47;0.97;-13.20;59.97;0.20;0.20;0.20;-0.00
+1;2024-08-02;13:47:30;126.03;2.94;361.26;370.59;82.63;0.97;-12.90;59.97;0.31;0.31;0.31;-0.00
