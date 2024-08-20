@@ -148,8 +148,10 @@ class MainProgram(Frame):
         self.log_text.grid(row=0, column=0, columnspan=3, pady=(0, 10))
 
         self.Cancelar_button = Button(self.Log_Contains, text="Cancelar", width=25, command=self.cancel_measurement)
-        
         self.Cancelar_button.grid(row=1, column=0,sticky="w", padx=(0, 10))
+
+        self.Configurate_button = Button(self.Log_Contains, text="Configurar", width=25, command=self.Start_Configurate)
+        self.Configurate_button.grid(row=1, column=2,sticky="e", padx=(0, 10))
        
     # Funcoes de operacao:
         
@@ -178,6 +180,20 @@ class MainProgram(Frame):
         time.sleep(0.1)
         return response
             
+    def Start_Configurate(self): 
+        try:
+            global RequestValueTime
+            RequestValueTime = int(self.MaxTime_Entry.get()) 
+            self.configure_wattmeter
+        except pyvisa.VisaIOError:
+            messagebox.showerror("Erro de Conexao", "Nao foi possivel conectar ao dispositivo GPIB.")
+        except ValueError:
+            messagebox.showerror("Erro de Entrada", "Por favor, verifique os valores de entrada.")
+        except Exception as e:
+            messagebox.showerror("Erro", f"Ocorreu um erro: {e}")
+        finally:
+            self.running = False          
+
     def Start_Application(self):
         try:
             global CSVname
@@ -189,7 +205,6 @@ class MainProgram(Frame):
             
             self.cancel_measurement = False
     
-            self.configure_wattmeter()
             self.write_sample("INTEGRATE:START")
     
             self.file = open(f'{CSVname}.csv', mode="w", newline='')
@@ -257,7 +272,7 @@ class MainProgram(Frame):
             self.log_text.insert(tk.END, "Medicoes concluidas.\n")
 
     def convert_to_decimal(self,values):
-        return [f"{float(value):.2f}".replace('.', ',') for value in values]
+        return [f"{float(value):.5f}".replace('.', ',') for value in values]
     
     def cancel_measurement(self):
         self.cancel_measurement = True
