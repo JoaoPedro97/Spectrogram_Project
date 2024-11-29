@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from ast import Return
 import time
 from pickle import PROTO
@@ -31,7 +32,7 @@ class MainProgram(tk.Tk):  # Herdando de Tk em vez de Toplevel
     def __init__(self):
         super().__init__()  # Inicializa o Tk
         self.geometry("500x800")
-        self.title("Spectrogram Alfa")
+        self.title("Spectrogram Beta")
 
         self.create_widgets_TestConnection()
         self.create_Ensaios_Bluetooth()
@@ -201,11 +202,11 @@ class MainProgram(tk.Tk):  # Herdando de Tk em vez de Toplevel
             ])
         result = self.instr.query("CALC:MARK1:Y?")  # Captura o valor do instrumento como string
         try:
-            result_float = float(result)  # Converte o resultado para um número de ponto flutuante
+            result_float = float(result)  # Converte o resultado para um numero de ponto flutuante
             rounded_result = round(result_float, 2)  # Arredonda para 2 casas decimais
             return rounded_result
         except ValueError:
-            # Caso o resultado não possa ser convertido (erro inesperado), retorna uma mensagem padrão
+            # Caso o resultado nao possa ser convertido (erro inesperado), retorna uma mensagem padrao
             return "Erro no resultado"
 
     def Command_NumeroFreq01(self):
@@ -455,7 +456,7 @@ class MainProgram(tk.Tk):  # Herdando de Tk em vez de Toplevel
                 messagebox.showerror("Erro", "IP nao configurado. Conecte-se a um instrumento primeiro.")
         except :
             messagebox.showerror("Erro", "IP nao configurado. Conecte-se a um instrumento primeiro.")
-
+         
 def main():
     app = MainProgram()  # Apenas cria a MainProgram
     app.mainloop()

@@ -1,63 +1,22 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\SKILL\\Documents\\GitHub\\Spectrogram_Project\\",
+  "WorkspaceRootPath": "C:\\Users\\Jo\u00E3o Pedro\\Documents\\GitHub\\Spectrogram_Project\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\SKILL\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\WT210Aplication.py||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Desenvolvimento_Spectrogram\\WT210Aplication.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Jo\u00E3o Pedro\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Spectrogram_ESP.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Desenvolvimento_Spectrogram\\Spectrogram_ESP.py||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\SKILL\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\CoderBater.py||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Desenvolvimento_Spectrogram\\CoderBater.py||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\SKILL\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Graf.py||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Desenvolvimento_Spectrogram\\Graf.py||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\SKILL\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Devep.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Jo\u00E3o Pedro\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Devep.py||{8B382828-6202-11D1-8870-0000F87579D2}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Desenvolvimento_Spectrogram\\Devep.py||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\SKILL\\Documents\\GitHub\\Spectrogram_Project\\Spectrogram_Simple\\Spectrogram_Alfa.py||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Spectrogram_Simple\\Spectrogram_Alfa.py||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|c:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\Extensions\\Microsoft\\Python\\Core\\pylance\\dist\\typeshed-fallback\\stdlib\\datetime.pyi||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\SKILL\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Yokogawa-WT210_Test.py||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Desenvolvimento_Spectrogram\\Yokogawa-WT210_Test.py||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\SKILL\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Teste_stringToInt.py||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Desenvolvimento_Spectrogram\\Teste_stringToInt.py||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|c:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\Extensions\\Microsoft\\Python\\Core\\pylance\\dist\\typeshed-fallback\\stdlib\\tkinter\\scrolledtext.pyi||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\SKILL\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Aplication.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Jo\u00E3o Pedro\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Aplication.py||{8B382828-6202-11D1-8870-0000F87579D2}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Desenvolvimento_Spectrogram\\Aplication.py||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\SKILL\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Teste_Janela_Config.py||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Desenvolvimento_Spectrogram\\Teste_Janela_Config.py||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|c:\\Users\\SKILL\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\pyvisa\\highlevel.py||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\SKILL\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Command_receiver.py||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Desenvolvimento_Spectrogram\\Command_receiver.py||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\SKILL\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\CodigoPolido.py||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Desenvolvimento_Spectrogram\\CodigoPolido.py||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\SKILL\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Exemplo_Dropdown.py||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Desenvolvimento_Spectrogram\\Exemplo_Dropdown.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Jo\u00E3o Pedro\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Spectrogram_Beta.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Desenvolvimento_Spectrogram\\Spectrogram_Beta.py||{8B382828-6202-11D1-8870-0000F87579D2}"
     }
   ],
   "DocumentGroupContainers": [
@@ -66,7 +25,7 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 298,
+          "DockedWidth": 284,
           "SelectedChildIndex": 5,
           "Children": [
             {
@@ -84,192 +43,59 @@
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Graf.py",
-              "DocumentMoniker": "C:\\Users\\SKILL\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Graf.py",
-              "RelativeDocumentMoniker": "Desenvolvimento_Spectrogram\\Graf.py",
-              "ToolTip": "C:\\Users\\SKILL\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Graf.py",
-              "RelativeToolTip": "Desenvolvimento_Spectrogram\\Graf.py",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAiAAAA",
+              "Title": "Aplication.py",
+              "DocumentMoniker": "C:\\Users\\Jo\u00E3o Pedro\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Aplication.py",
+              "RelativeDocumentMoniker": "Desenvolvimento_Spectrogram\\Aplication.py",
+              "ToolTip": "C:\\Users\\Jo\u00E3o Pedro\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Aplication.py",
+              "RelativeToolTip": "Desenvolvimento_Spectrogram\\Aplication.py",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAADwBAAAhAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
-              "WhenOpened": "2024-08-09T11:34:58.791Z",
+              "WhenOpened": "2024-11-07T17:27:04.464Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Spectrogram_Beta.py",
+              "DocumentMoniker": "C:\\Users\\Jo\u00E3o Pedro\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Spectrogram_Beta.py",
+              "RelativeDocumentMoniker": "Desenvolvimento_Spectrogram\\Spectrogram_Beta.py",
+              "ToolTip": "C:\\Users\\Jo\u00E3o Pedro\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Spectrogram_Beta.py",
+              "RelativeToolTip": "Desenvolvimento_Spectrogram\\Spectrogram_Beta.py",
+              "ViewState": "AQIAAK4AAAAAAAAAAAAcwAcBAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2024-11-29T00:07:32.715Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "CoderBater.py",
-              "DocumentMoniker": "C:\\Users\\SKILL\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\CoderBater.py",
-              "RelativeDocumentMoniker": "Desenvolvimento_Spectrogram\\CoderBater.py",
-              "ToolTip": "C:\\Users\\SKILL\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\CoderBater.py",
-              "RelativeToolTip": "Desenvolvimento_Spectrogram\\CoderBater.py",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAAAAAA",
+              "Title": "Devep.py",
+              "DocumentMoniker": "C:\\Users\\Jo\u00E3o Pedro\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Devep.py",
+              "RelativeDocumentMoniker": "Desenvolvimento_Spectrogram\\Devep.py",
+              "ToolTip": "C:\\Users\\Jo\u00E3o Pedro\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Devep.py",
+              "RelativeToolTip": "Desenvolvimento_Spectrogram\\Devep.py",
+              "ViewState": "AQIAAKwCAAAAAAAAAAAhwNMCAAAUAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
-              "WhenOpened": "2024-08-08T23:05:35.947Z",
+              "WhenOpened": "2024-11-06T14:50:21.355Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "WT210Aplication.py",
-              "DocumentMoniker": "C:\\Users\\SKILL\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\WT210Aplication.py",
-              "RelativeDocumentMoniker": "Desenvolvimento_Spectrogram\\WT210Aplication.py",
-              "ToolTip": "C:\\Users\\SKILL\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\WT210Aplication.py",
-              "RelativeToolTip": "Desenvolvimento_Spectrogram\\WT210Aplication.py",
-              "ViewState": "AQIAAPoAAAAAAAAAAAAowAMBAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
-              "WhenOpened": "2024-08-01T10:47:38.174Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "datetime.pyi",
-              "DocumentMoniker": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\Extensions\\Microsoft\\Python\\Core\\pylance\\dist\\typeshed-fallback\\stdlib\\datetime.pyi",
-              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\Extensions\\Microsoft\\Python\\Core\\pylance\\dist\\typeshed-fallback\\stdlib\\datetime.pyi",
-              "ToolTip": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\Extensions\\Microsoft\\Python\\Core\\pylance\\dist\\typeshed-fallback\\stdlib\\datetime.pyi",
-              "RelativeToolTip": "..\\..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\Extensions\\Microsoft\\Python\\Core\\pylance\\dist\\typeshed-fallback\\stdlib\\datetime.pyi",
-              "ViewState": "AQIAAO4AAAAAAAAAAAAUwP8AAAAIAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-07-31T17:24:44.607Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "highlevel.py",
-              "DocumentMoniker": "C:\\Users\\SKILL\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\pyvisa\\highlevel.py",
-              "RelativeDocumentMoniker": "..\\..\\..\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\pyvisa\\highlevel.py",
-              "ToolTip": "C:\\Users\\SKILL\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\pyvisa\\highlevel.py",
-              "RelativeToolTip": "..\\..\\..\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python310\\site-packages\\pyvisa\\highlevel.py",
-              "ViewState": "AQIAAPwKAAAAAAAAAAAYwBALAAAvAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
-              "WhenOpened": "2024-07-31T16:37:02.095Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "Command_receiver.py",
-              "DocumentMoniker": "C:\\Users\\SKILL\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Command_receiver.py",
-              "RelativeDocumentMoniker": "Desenvolvimento_Spectrogram\\Command_receiver.py",
-              "ToolTip": "C:\\Users\\SKILL\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Command_receiver.py",
-              "RelativeToolTip": "Desenvolvimento_Spectrogram\\Command_receiver.py",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAYwBsAAAAIAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
-              "WhenOpened": "2024-07-17T17:35:57.573Z"
             }
           ]
         },
         {
-          "DockedWidth": 102,
+          "DockedWidth": 312,
           "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Devep.py",
-              "DocumentMoniker": "C:\\Users\\SKILL\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Devep.py",
-              "RelativeDocumentMoniker": "Desenvolvimento_Spectrogram\\Devep.py",
-              "ToolTip": "C:\\Users\\SKILL\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Devep.py",
-              "RelativeToolTip": "Desenvolvimento_Spectrogram\\Devep.py",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAQAAAA",
+              "DocumentIndex": 0,
+              "Title": "Spectrogram_ESP.py",
+              "DocumentMoniker": "C:\\Users\\Jo\u00E3o Pedro\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Spectrogram_ESP.py",
+              "RelativeDocumentMoniker": "Desenvolvimento_Spectrogram\\Spectrogram_ESP.py",
+              "ToolTip": "C:\\Users\\Jo\u00E3o Pedro\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Spectrogram_ESP.py",
+              "RelativeToolTip": "Desenvolvimento_Spectrogram\\Spectrogram_ESP.py",
+              "ViewState": "AQIAAE8BAAAAAAAAAAAhwLEBAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
-              "WhenOpened": "2024-07-11T16:51:09.798Z",
+              "WhenOpened": "2024-11-29T12:21:21.528Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Yokogawa-WT210_Test.py",
-              "DocumentMoniker": "C:\\Users\\SKILL\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Yokogawa-WT210_Test.py",
-              "RelativeDocumentMoniker": "Desenvolvimento_Spectrogram\\Yokogawa-WT210_Test.py",
-              "ToolTip": "C:\\Users\\SKILL\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Yokogawa-WT210_Test.py",
-              "RelativeToolTip": "Desenvolvimento_Spectrogram\\Yokogawa-WT210_Test.py",
-              "ViewState": "AQIAABwAAAAAAAAAAAAowDAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
-              "WhenOpened": "2024-07-31T16:13:58.721Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Teste_stringToInt.py",
-              "DocumentMoniker": "C:\\Users\\SKILL\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Teste_stringToInt.py",
-              "RelativeDocumentMoniker": "Desenvolvimento_Spectrogram\\Teste_stringToInt.py",
-              "ToolTip": "C:\\Users\\SKILL\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Teste_stringToInt.py",
-              "RelativeToolTip": "Desenvolvimento_Spectrogram\\Teste_stringToInt.py",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
-              "WhenOpened": "2024-08-01T21:25:17.313Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Spectrogram_Alfa.py",
-              "DocumentMoniker": "C:\\Users\\SKILL\\Documents\\GitHub\\Spectrogram_Project\\Spectrogram_Simple\\Spectrogram_Alfa.py",
-              "RelativeDocumentMoniker": "Spectrogram_Simple\\Spectrogram_Alfa.py",
-              "ToolTip": "C:\\Users\\SKILL\\Documents\\GitHub\\Spectrogram_Project\\Spectrogram_Simple\\Spectrogram_Alfa.py",
-              "RelativeToolTip": "Spectrogram_Simple\\Spectrogram_Alfa.py",
-              "ViewState": "AQIAAP0BAAAAAAAAAAAYwCYCAAATAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
-              "WhenOpened": "2024-07-12T20:26:57.611Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "scrolledtext.pyi",
-              "DocumentMoniker": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\Extensions\\Microsoft\\Python\\Core\\pylance\\dist\\typeshed-fallback\\stdlib\\tkinter\\scrolledtext.pyi",
-              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\Extensions\\Microsoft\\Python\\Core\\pylance\\dist\\typeshed-fallback\\stdlib\\tkinter\\scrolledtext.pyi",
-              "ToolTip": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\Extensions\\Microsoft\\Python\\Core\\pylance\\dist\\typeshed-fallback\\stdlib\\tkinter\\scrolledtext.pyi",
-              "RelativeToolTip": "..\\..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\Extensions\\Microsoft\\Python\\Core\\pylance\\dist\\typeshed-fallback\\stdlib\\tkinter\\scrolledtext.pyi",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-08-01T20:01:18.271Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "Teste_Janela_Config.py",
-              "DocumentMoniker": "C:\\Users\\SKILL\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Teste_Janela_Config.py",
-              "RelativeDocumentMoniker": "Desenvolvimento_Spectrogram\\Teste_Janela_Config.py",
-              "ToolTip": "C:\\Users\\SKILL\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Teste_Janela_Config.py",
-              "RelativeToolTip": "Desenvolvimento_Spectrogram\\Teste_Janela_Config.py",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAJ0AAAASAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
-              "WhenOpened": "2024-07-15T21:22:27.484Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Aplication.py",
-              "DocumentMoniker": "C:\\Users\\SKILL\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Aplication.py",
-              "RelativeDocumentMoniker": "Desenvolvimento_Spectrogram\\Aplication.py",
-              "ToolTip": "C:\\Users\\SKILL\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Aplication.py",
-              "RelativeToolTip": "Desenvolvimento_Spectrogram\\Aplication.py",
-              "ViewState": "AQIAADYAAAAAAAAAAAAAAFwAAAAWAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
-              "WhenOpened": "2024-07-11T14:55:04.897Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "CodigoPolido.py",
-              "DocumentMoniker": "C:\\Users\\SKILL\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\CodigoPolido.py",
-              "RelativeDocumentMoniker": "Desenvolvimento_Spectrogram\\CodigoPolido.py",
-              "ToolTip": "C:\\Users\\SKILL\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\CodigoPolido.py",
-              "RelativeToolTip": "Desenvolvimento_Spectrogram\\CodigoPolido.py",
-              "ViewState": "AQIAADQAAAAAAAAAAAAAAEAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
-              "WhenOpened": "2024-07-11T14:56:26.301Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "Exemplo_Dropdown.py",
-              "DocumentMoniker": "C:\\Users\\SKILL\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Exemplo_Dropdown.py",
-              "RelativeDocumentMoniker": "Desenvolvimento_Spectrogram\\Exemplo_Dropdown.py",
-              "ToolTip": "C:\\Users\\SKILL\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Exemplo_Dropdown.py",
-              "RelativeToolTip": "Desenvolvimento_Spectrogram\\Exemplo_Dropdown.py",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
-              "WhenOpened": "2024-07-12T14:02:38Z"
             }
           ]
         }

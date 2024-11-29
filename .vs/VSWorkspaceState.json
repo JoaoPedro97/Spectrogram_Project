@@ -2,10 +2,8 @@
   "ExpandedNodes": [
     "",
     "\\Desenvolvimento_Spectrogram",
-    "\\Spectrogram_Simple",
-    "\\Spectrogram_Simple\\output",
-    "\\Spectrogram_Simple\\output\\Spectrogram_Alfa"
+    "\\logs"
   ],
-  "SelectedNode": "\\Desenvolvimento_Spectrogram\\WT210Aplication.py",
+  "SelectedNode": "\\Desenvolvimento_Spectrogram\\Spectrogram_ESP.py",
   "PreviewInSolutionExplorer": false
 }

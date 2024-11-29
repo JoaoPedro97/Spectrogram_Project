@@ -1,6 +1,6 @@
 from asyncio import selector_events
 from asyncio.windows_events import NULL
-from distutils.dist import command_re
+#from distutils.dist import command_re
 from logging import root
 from msilib.schema import CheckBox, ListBox
 from re import match

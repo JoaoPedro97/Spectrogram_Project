@@ -1,6 +1,8 @@
 from asyncio import selector_events
 from asyncio.windows_events import NULL
-from distutils.dist import command_re
+#from distutils.dist import command_re
+import os
+from tkinter import filedialog
 from logging import root
 from msilib.schema import CheckBox, ListBox
 from re import match
@@ -142,6 +144,7 @@ class CommandTestWindow(tk.Toplevel):
 
         self.buttom_Send() #Botao de envio dos comandos
         self.buttom_Reset() #Botao de Reset
+        self.buttom_Print()
         
     def ChannerPower_Box(self):
         self.Check_State_PWR = tk.IntVar()        
@@ -260,7 +263,7 @@ class CommandTestWindow(tk.Toplevel):
         self.Sweep_Contains = tk.LabelFrame(self.Boxline_1, text="Sweep", font=("Calibri", "10", "bold"), padx=25, pady=5)
         self.Sweep_Contains.pack(side=tk.LEFT, padx=10, pady=10)
 
-        # Variavel para armazenar a seleção do Sweep
+        # Variavel para armazenar a selecao do Sweep
         self.sweep_var = tk.StringVar(value="Continuous Sweep")
 
         # linha 1 Sweep continuous
@@ -339,7 +342,7 @@ class CommandTestWindow(tk.Toplevel):
         self.Span_Contains = tk.LabelFrame(self.Boxline_2, text="SPAN", font=("Calibri", "10", "bold"), padx=25, pady=10)
         self.Span_Contains.pack(side=tk.LEFT, padx=10, pady=10)
 
-        # Variavel para armazenar a seleção do Span
+        # Variavel para armazenar a selecao do Span
         self.span_var = tk.StringVar(value="Span Manual")
 
         # linha Span Manual
@@ -528,6 +531,13 @@ class CommandTestWindow(tk.Toplevel):
         self.buttom_Reset = tk.Button(self.buttom_Contains,text="RESET", command=self.reset_instrument)
         self.buttom_Reset.grid(row = 0, column = 2, padx=(0, 10)) #Botao de reset no analisador
         
+    def buttom_Print(self):
+        self.buttom_Contains = tk.LabelFrame(self.Boxline_1A, text="Botao de print do analisador", font=("Calibri", "10", "bold"), padx=25, pady=10)
+        self.buttom_Contains.pack(side=tk.LEFT, padx=10, pady=10)
+
+        self.buttom_Print = tk.Button(self.buttom_Contains,text="Print", command=self.Print_instrument)
+        self.buttom_Print.grid(row = 0, column = 2, padx=(0, 10)) #Botao de print no analisador        
+
     def reset_instrument(self):
         if global_ip:
             try:
@@ -538,6 +548,62 @@ class CommandTestWindow(tk.Toplevel):
                 messagebox.showerror("Error", f"Failed to reset instrument.\n{e}")
         else:
             messagebox.showerror("Error", "IP not set. Please connect to an instrument first.")
+            
+    def Print_instrument(self):
+    
+        # Diretorio padrao para salvar
+        default_dir = r"\\SERVIDORCENTRAL\Medidas_FSMR3"
+    
+        # Perguntar ao usuario se quer escolher um diretorio
+        if messagebox.askyesno("Escolha do Diretorio", "Deseja escolher o local para salvar o print?"):
+            save_dir = filedialog.askdirectory(title="Selecione o diretorio para salvar o print")
+            if not save_dir:
+                messagebox.showerror("Erro", "Nenhum diretorio selecionado. Cancelando operacao.")
+                return
+        else:
+            save_dir = default_dir
+    
+        # Gerar o caminho completo do arquivo de print com nome baseado na hora
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        save_path = os.path.join(save_dir, f"Instrument_Print_{timestamp}.bmp")
+    
+        # Realizar comunicacao com o instrumento e salvar o print
+        if global_ip:  # Verifica se ha um IP configurado
+            try:
+                # Conectar ao instrumento (FSMR ou ESR)
+                instr = RsInstrument(f'TCPIP::{global_ip}::INSTR', True, False)
+    
+                # Identificar o modelo do instrumento
+                instrument_model = instr.query_str("*IDN?").split(",")[1].strip()
+                print(f"Modelo do instrumento detectado: {instrument_model}")
+    
+                # Comandos SCPI especificos
+                if "FSMR" or "FSQ" or "FSP" in instrument_model:
+                    # Comandos para FSMR
+                    instr.write_str('HCOP:DEST "MMEM"')  # Enviar print para a memoria interna
+                    instr.write_str(f'MMEM:NAME "C:\\Temp\\fsmr_screen.bmp"')  # Nome temporario no FSMR
+                    instr.write_str('HCOP:IMM')  # Capturar a tela imediatamente
+                    instr.query_bin_block_to_file('MMEM:DATA? "C:\\Temp\\fsmr_screen.bmp"', save_path)
+                elif "ESR" in instrument_model:
+                    # Comandos para ESR
+                    instr.write_str('HCOP:DEV:LANG BMP')  # Define o formato do print como BMP
+                    instr.write_str('HCOP:DEST "MMEM"')  # Enviar print para a memoria interna
+                    instr.write_str(f'MMEM:NAME "C:\\Temp\\esr_screen.bmp"')  # Nome temporario no ESR
+                    instr.write_str('HCOP:IMM')  # Capturar a tela imediatamente
+                    instr.query_bin_block_to_file('MMEM:DATA? "C:\\Temp\\esr_screen.bmp"', save_path)
+                else:
+                    messagebox.showerror("Erro", f"Modelo do instrumento nao suportado: {instrument_model}")
+                    return
+    
+                # Notificar o sucesso
+                messagebox.showinfo("Sucesso", f"Print salvo com sucesso em:\n{save_path}")
+            except Exception as e:
+                messagebox.showerror("Erro", f"Falha ao salvar o print.\n{e}")
+            finally:
+                instr.close()
+        else:
+            messagebox.showerror("Erro", "IP nao configurado. Conecte-se a um instrumento primeiro.")
+
 
     def bw_Command(self,rbw,vbw,URBW,UVBW,SweepTime,SWTime):
         instr = RsInstrument(f'TCPIP::{global_ip}::INSTR', True, False)
@@ -762,7 +828,7 @@ class SendCommandsWindows(tk.Toplevel):
         super().__init__(master)
         self.title("Configuracao do Analisador de Espectro")
         
-        # Lista de comandos que não esperam resposta
+        # Lista de comandos que nao esperam resposta
         self.comandos_sem_resposta = ["*RST?"]  # Adicione outros comandos conforme necessario
 
         # Frame principal
@@ -777,7 +843,7 @@ class SendCommandsWindows(tk.Toplevel):
         self.comando_entry.grid(row=0, column=1, sticky="e")
         self.comando_entry.bind("<Return>", self.enviar_comando)  # Bind para tecla Enter
 
-        # Botão de enviar
+        # Botao de enviar
         self.enviar_button = tk.Button(self.frame_principal, text="Enviar", command=self.enviar_comando)
         self.enviar_button.grid(row=0, column=2, padx=(10, 0))
 
@@ -895,7 +961,7 @@ class NewPresetWindows(tk.Toplevel):
         self.Sweep_Contains = tk.LabelFrame(self.Boxline_1, text="Sweep", font=("Calibri", "10", "bold"), padx=25, pady=5)
         self.Sweep_Contains.pack(side=tk.LEFT, padx=10, pady=10)
 
-        # Variavel para armazenar a seleção do Sweep
+        # Variavel para armazenar a selecao do Sweep
         self.sweep_var = tk.StringVar(value="Continuous Sweep")
 
         # linha 1 Sweep continuous
@@ -974,7 +1040,7 @@ class NewPresetWindows(tk.Toplevel):
         self.Span_Contains = tk.LabelFrame(self.Boxline_2, text="SPAN", font=("Calibri", "10", "bold"), padx=25, pady=10)
         self.Span_Contains.pack(side=tk.LEFT, padx=10, pady=10)
 
-        # Variavel para armazenar a seleção do Span
+        # Variavel para armazenar a selecao do Span
         self.span_var = tk.StringVar(value="Span Manual")
 
         # linha Span Manual
