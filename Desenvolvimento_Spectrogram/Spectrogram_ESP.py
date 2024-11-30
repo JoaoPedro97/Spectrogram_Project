@@ -9,6 +9,7 @@ import os
 from tkinter import filedialog
 from logging import root
 from tkinter import font
+from tkinter.tix import STATUS
 from token import NAME
 from turtle import st
 from RsInstrument.RsInstrument import RsInstrument
@@ -229,6 +230,56 @@ class MainProgram(tk.Tk):  # Herdando de Tk em vez de Toplevel
             State_Print.clear()
             self.instr.go_to_local()
 
+    def Command_Espurios(self,SelectStep,Status_5G,FirthFreq, LestFreq):
+        Final_freq = int(LestFreq)
+        start_freq = int(FirthFreq)
+        start_freq_minus_100 = start_freq - 100  
+        Final_freq_Plus_100 = Final_freq + 100 
+        start_freq_minus_100_str = str(start_freq_minus_100)
+        Final_freq_Plus_100_str = str(Final_freq_Plus_100)  
+        if Status_5G:
+            RBW = "BAND 1 MHz"
+            VBW = "BAND 3 MHz"
+        else:
+            RBW = "BAND 100 kHz"
+            VBW = "BAND:VID 300 kHz"            
+        if SelectStep is 0:
+            Stepper_Start = "FREQ:START 30 MHz"
+            Stepper_Stop = f"FREQ:STOP {FirthFreq} MHz"
+        elif SelectStep is 1:
+            Stepper_Start = f"FREQ:START {start_freq_minus_100_str} MHz"
+            Stepper_Stop = f"FREQ:STOP {FirthFreq} MHz"     
+        elif SelectStep is 2:
+            Stepper_Start = f"FREQ:START {LestFreq} MHz",
+            Stepper_Stop  = f"FREQ:STOP {Final_freq_Plus_100_str} MHz"            
+        elif SelectStep is 3:
+            Stepper_Start = f"FREQ:START {LestFreq} MHz",
+            Stepper_Stop  = f"FREQ:STOP 18 GHz"             
+        
+        
+        self.command_template([
+            "*RST",
+            f"{RBW}",
+            f"{VBW}",
+            "DISP:WIND:TRAC:Y:RLEV 20dBm",
+            "INP:ATT 40 DB",
+            "DISP:WIND:TRAC:MODE MAXH",
+            f"{Stepper_Start}",
+            f"{Stepper_Stop}"
+        ])
+        time.sleep(5)
+        self.command_template([
+            "CALC:MARK1:MAX",
+            "CALC:DELT:X -10 MHz",
+            "CALC:DELT:MAX:LEFT"
+            ])
+        State_Print.append(f"30-{self.StartEntry.get()}")
+        print(State_Print)
+        time.sleep(2)
+        self.Print_Screen_Func(0)
+        
+
+
     def Command_Espur01(self):
         start_freq = int(self.StartEntry.get())
         start_freq_minus_10 = start_freq - 10 
@@ -434,7 +485,6 @@ class MainProgram(tk.Tk):  # Herdando de Tk em vez de Toplevel
 
 
 
-
     def execute_command(self, command_function):
         try:
             command_function()
@@ -459,7 +509,6 @@ class MainProgram(tk.Tk):  # Herdando de Tk em vez de Toplevel
               return
         else:
           self.save_dir = default_dir
-
 
     def Print_Screen_Func(self,IndexPrint):
         try:

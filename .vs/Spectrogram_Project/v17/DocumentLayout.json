@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\Jo\u00E3o Pedro\\Documents\\GitHub\\Spectrogram_Project\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Jo\u00E3o Pedro\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Spectrogram_ESP.py||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Desenvolvimento_Spectrogram\\Spectrogram_ESP.py||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Jo\u00E3o Pedro\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Devep.py||{8B382828-6202-11D1-8870-0000F87579D2}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Desenvolvimento_Spectrogram\\Devep.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Jo\u00E3o Pedro\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Spectrogram_ESP.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Desenvolvimento_Spectrogram\\Spectrogram_ESP.py||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Jo\u00E3o Pedro\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Aplication.py||{8B382828-6202-11D1-8870-0000F87579D2}",
@@ -67,13 +67,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "Devep.py",
               "DocumentMoniker": "C:\\Users\\Jo\u00E3o Pedro\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Devep.py",
               "RelativeDocumentMoniker": "Desenvolvimento_Spectrogram\\Devep.py",
               "ToolTip": "C:\\Users\\Jo\u00E3o Pedro\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Devep.py",
               "RelativeToolTip": "Desenvolvimento_Spectrogram\\Devep.py",
-              "ViewState": "AQIAAKwCAAAAAAAAAAAhwNMCAAAUAAAA",
+              "ViewState": "AQIAALACAAAAAAAAAAAAALgCAAARAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
               "WhenOpened": "2024-11-06T14:50:21.355Z",
               "EditorCaption": ""
@@ -86,13 +86,13 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Spectrogram_ESP.py",
               "DocumentMoniker": "C:\\Users\\Jo\u00E3o Pedro\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Spectrogram_ESP.py",
               "RelativeDocumentMoniker": "Desenvolvimento_Spectrogram\\Spectrogram_ESP.py",
               "ToolTip": "C:\\Users\\Jo\u00E3o Pedro\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Spectrogram_ESP.py",
               "RelativeToolTip": "Desenvolvimento_Spectrogram\\Spectrogram_ESP.py",
-              "ViewState": "AQIAAE8BAAAAAAAAAAAhwLEBAAAAAAAA",
+              "ViewState": "AQIAAOgAAAAAAAAAAAAhwPkAAAAcAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
               "WhenOpened": "2024-11-29T12:21:21.528Z",
               "EditorCaption": ""
