@@ -1,21 +1,9 @@
-from ast import Return
-from cProfile import label
 import time
-from pickle import PROTO
 from tkinter import *
-from tkinter import messagebox
-import tkinter as tk
 import os
-from tkinter import filedialog
-from logging import root
-from tkinter import font
-from tkinter.tix import STATUS
-from token import NAME
-from turtle import st
-from RsInstrument.RsInstrument import RsInstrument
 import tkinter as tk
-from tkinter import LabelFrame, Label, Entry, OptionMenu, StringVar, TOP
-
+from tkinter import filedialog, messagebox, OptionMenu, StringVar
+from RsInstrument.RsInstrument import RsInstrument
 
 # Dicionario que mapeia tecnologias para seus arrays de modulacoes
 TechnologyModulations = {
@@ -36,8 +24,6 @@ TechnologyModulations = {
     "ZigBee": ["O-QPSK"],  
     "ZigFox": ["DBPSK","GFSK"]
 }
-
-State_Print = []
 
 class MainProgram(tk.Tk):  # Herdando de Tk em vez de Toplevel
     def __init__(self):
@@ -75,42 +61,30 @@ class MainProgram(tk.Tk):  # Herdando de Tk em vez de Toplevel
 
         self.Container_3 = Frame(self.Container_1, padx=10, pady=10)
         self.Container_3.pack()
-    
 
     def authenticate(self):
         self.ip_val = self.EntradaIP.get()
         try:
             self.resource_string_1 = f'TCPIP::{self.ip_val}::INSTR'
             self.instr = RsInstrument(self.resource_string_1, True, False)
-            idn = self.instr.query_str('*IDN?')
-            driver = self.instr.driver_version
-            visa_manufacturer = self.instr.visa_manufacturer
-            instrument_full_name = self.instr.full_instrument_model_name
+            self.idn = self.instr.query_str('*IDN?')
+            self.driver = self.instr.driver_version
+            self.visa_manufacturer = self.instr.visa_manufacturer
+            self.instrument_full_name = self.instr.full_instrument_model_name
 
-            info = f"Name: {idn}\nRsInstrument Driver Version: {driver}\nVisa Manufacturer: {visa_manufacturer}\nInstrument Full Name: {instrument_full_name}"
+            info = f"Name: {self.idn}\nRsInstrument Driver Version: {self.driver}\nVisa Manufacturer: {self.visa_manufacturer}\nInstrument Full Name: {self.instrument_full_name}"
             messagebox.showinfo("Instrument informations", info)
+            self.info_instrument()
         except Exception as e:
             messagebox.showerror("Error", f"Connections Fail!\n{e}")
             self.lb.delete(0, END)
-            return
-        else:
-            self.lb.delete(0, END)
-            self.info_instrument()
 
     def info_instrument(self):
-        self.ip_val = self.EntradaIP.get()
-        resource_string_1 = f'TCPIP::{self.ip_val}::INSTR'
-        instr = RsInstrument(resource_string_1, True, False)
-        idn = instr.query_str('*IDN?')
-        driver = instr.driver_version
-        visa_manufacturer = instr.visa_manufacturer
-        instrument_full_name = instr.full_instrument_model_name
-
-        self.lb.insert(END, 'Name: ' + idn)
-        self.lb.insert(END, 'RsInstrument Driver Version: ' + driver)
-        self.lb.insert(END, 'Visa Manufacturer: ' + visa_manufacturer)
-        self.lb.insert(END, 'Instrument full name: ' + instrument_full_name)
-        self.lb.insert(END, 'Instrument Installed Options: ' + ",".join(instr.instrument_options))
+        self.lb.insert(END, 'Name: ' + self.idn)
+        self.lb.insert(END, 'RsInstrument Driver Version: ' + self.driver)
+        self.lb.insert(END, 'Visa Manufacturer: ' + self.visa_manufacturer)
+        self.lb.insert(END, 'Instrument full name: ' + self.instrument_full_name)
+        self.lb.insert(END, 'Instrument Installed Options: ' + ",".join(self.instr.instrument_options))
         self.lb.insert(END, "Connection Success")
         self.lb.itemconfig(END, {'fg': 'green'})
 
@@ -132,14 +106,12 @@ class MainProgram(tk.Tk):  # Herdando de Tk em vez de Toplevel
         self.ProtocolEntry = Entry(self.FrameConfig, font=("Arial", "10"), width= 20)
         self.ProtocolEntry.grid(row=0, column=1,sticky="w", padx=(0,10))
         
-        # Menu para selecao de tecnologia
         self.TechnologyLabel = Label(self.FrameConfig, text="Selecione a tecnologia: ", font=("Calibri", "12"))
         self.TechnologyLabel.grid(row=1, column=0, sticky="w", padx=(0, 10))
 
         self.TechnologySelect = OptionMenu(self.FrameConfig, self.TechnologyChose, *TechnologyModulations.keys(), command=self.update_modulations)
         self.TechnologySelect.grid(row=1, column=1, sticky="e", padx=(0, 10))
 
-        # Menu para selecao de modulacao
         self.ModulationLabel = Label(self.FrameConfig, text="Selecione a modulacao: ", font=("Calibri", "12"))
         self.ModulationLabel.grid(row=2, column=0, sticky="w", padx=(0, 10))
 
@@ -151,7 +123,6 @@ class MainProgram(tk.Tk):  # Herdando de Tk em vez de Toplevel
 
         self.Check5G = tk.Checkbutton(self.FrameConfig,variable=self.CheckState_5G)
         self.Check5G.grid(row=3, column=1, sticky="w")  
-
 
         self.SetFreqStartLabel = Label(self.FrameConfig, text="Informe a frequencia Inicial e Final da amostra: ", font=("Calibri","12"))
         self.SetFreqStartLabel.grid(row=4, column=0, columnspan=2, sticky="w", padx=(0, 10))
@@ -202,61 +173,83 @@ class MainProgram(tk.Tk):  # Herdando de Tk em vez de Toplevel
         if modulations:
             self.ModulationChose.set(modulations[0])
         else:
-            self.ModulationChose.set("")
-        self.FrameConfig = LabelFrame(text="Configuracao para espurios", padx=10, pady=10)
-        self.FrameConfig.pack(side=TOP)       
+            self.ModulationChose.set("")    
 
     def StartSequence(self):
         Status_5G = self.CheckState_5G.get()
-        messagebox.showinfo("Inicio dos testes de Espurios","Selecione o canal inicial no seu ESE para Iniciar os testes")
-        if Status_5G:
-            self.execute_command(self.Command_Espur01_5G)
-            time.sleep(5)
-            self.execute_command(self.Command_Espur02_5G)
-            messagebox.showinfo("Troca de selecao de canal","Selecione o canal final no seu ESE para continuar os testes")
-            self.execute_command(self.Command_Espur03_5G)
-            time.sleep(5)
-            self.execute_command(self.Command_Espur04_5G)
-            State_Print.clear()
+        FirthFreq = self.StartEntry.get()
+        LestFreq = self.FinalEntry.get()
+        try:
+            messagebox.showinfo("Inicio dos testes de Espurios","Selecione o canal inicial no seu ESE para Iniciar os testes")
+            for stage in range(4):
+                if stage == 2:
+                    messagebox.showinfo("Troca de selecao de canal","Selecione o canal final no seu ESE para continuar os testes")
+                self.Command_Espurios(stage, Status_5G, FirthFreq, LestFreq)
             self.instr.go_to_local()
-        else:
-            self.execute_command(self.Command_Espur01)
-            time.sleep(5)
-            self.execute_command(self.Command_Espur02)
-            messagebox.showinfo("Troca de selecao de canal","Selecione o canal final no seu ESE para continuar os testes")
-            self.execute_command(self.Command_Espur03)
-            time.sleep(5)
-            self.execute_command(self.Command_Espur04)
-            State_Print.clear()
-            self.instr.go_to_local()
+            messagebox.showinfo ("Operacao Concluida!","Testes concluido, prints salvos na pasta!")
+        except Exception as e:
+            messagebox.showerror("Erro ao executar",f"Falha na execucao do processo: \n{e}")
 
-    def Command_Espurios(self,SelectStep,Status_5G,FirthFreq, LestFreq):
+    def ModulationSelector(self):
+        modulation = self.ModulationChose.get()
+        Bandwidth_MHz = 10
+        if "40" in modulation:
+            Bandwidth_MHz = 30 # (40/2)+10 = 30 MHz
+        elif "80" in modulation:
+            Bandwidth_MHz = 50 # (80/2)+10 = 50 MHz
+        elif "160" in modulation:
+            Bandwidth_MHz = 90 # (160/2)+10 = 90 MHz
+        elif "320" in modulation: 
+            Bandwidth_MHz = 170 # (320/2)+10 = 170 MHz
+        elif "GFSK" or "8DQPSK" or "PI-4DQPSK" or "BLE 1M" or "DBPSK" or "O-QPSK" in modulation:
+            Bandwidth_MHz = 10 # 10 MHz para larguras de 1 MHz
+        else:
+            Bandwidth_MHz = 20 # para os demais, espaco de ate 20 MHZ        
+        return Bandwidth_MHz
+    
+    def Command_Espurios(self,SelectStep,Status_5G,FirthFreq, LestFreq): # a funcao esta imensa, vou tentar pensar em como reduzir isso mais tarde. terao outros acrecimo // Olhar nota no inicio do codigo
         Final_freq = int(LestFreq)
         start_freq = int(FirthFreq)
-        start_freq_minus_100 = start_freq - 100  
-        Final_freq_Plus_100 = Final_freq + 100 
-        start_freq_minus_100_str = str(start_freq_minus_100)
-        Final_freq_Plus_100_str = str(Final_freq_Plus_100)  
         if Status_5G:
             RBW = "BAND 1 MHz"
-            VBW = "BAND 3 MHz"
+            VBW = "BAND:VID 3 MHz"
+            MarkDelt = "MARK2"
+            if SelectStep == 0 or SelectStep ==  1:
+                Position = f"{str(start_freq - self.ModulationSelector())}"
+            elif SelectStep == 2 or SelectStep ==  3:
+                Position = f"{str(Final_freq + self.ModulationSelector())}"
         else:
             RBW = "BAND 100 kHz"
-            VBW = "BAND:VID 300 kHz"            
-        if SelectStep is 0:
+            VBW = "BAND:VID 300 kHz"
+            MarkDelt = "DELT"
+            if SelectStep == 0 or SelectStep ==  1:
+                Position = f"-{str(self.ModulationSelector())}"              
+            elif SelectStep == 2 or SelectStep ==  3:
+                Position = f"{str(self.ModulationSelector())}"
+        if SelectStep == 0:
             Stepper_Start = "FREQ:START 30 MHz"
             Stepper_Stop = f"FREQ:STOP {FirthFreq} MHz"
-        elif SelectStep is 1:
-            Stepper_Start = f"FREQ:START {start_freq_minus_100_str} MHz"
-            Stepper_Stop = f"FREQ:STOP {FirthFreq} MHz"     
-        elif SelectStep is 2:
-            Stepper_Start = f"FREQ:START {LestFreq} MHz",
-            Stepper_Stop  = f"FREQ:STOP {Final_freq_Plus_100_str} MHz"            
-        elif SelectStep is 3:
-            Stepper_Start = f"FREQ:START {LestFreq} MHz",
-            Stepper_Stop  = f"FREQ:STOP 18 GHz"             
-        
-        
+            Command_Marker_Start = f"CALC:{MarkDelt}:X {Position} MHz"
+            Command_Marker_Finish = f"CALC:{MarkDelt}:MAX:LEFT"
+            Name_Print = f"30-{FirthFreq}"
+        elif SelectStep == 1:
+            Stepper_Start = f"FREQ:START {str(start_freq - 100)} MHz"
+            Stepper_Stop = f"FREQ:STOP {FirthFreq} MHz"
+            Command_Marker_Start = f"CALC:{MarkDelt}:X {Position} MHz"
+            Command_Marker_Finish = f"CALC:{MarkDelt}:MAX:LEFT"
+            Name_Print = f"{str(start_freq - 100)}-{FirthFreq}"
+        elif SelectStep == 2:
+            Stepper_Start = f"FREQ:START {LestFreq} MHz"
+            Stepper_Stop  = f"FREQ:STOP {str(Final_freq + 100)} MHz"  
+            Command_Marker_Start = f"CALC:{MarkDelt}:X {Position} MHz"
+            Command_Marker_Finish = f"CALC:{MarkDelt}:MAX:RIGH"
+            Name_Print = f"{LestFreq}-{str(Final_freq + 100)}"
+        elif SelectStep == 3:
+            Stepper_Start = f"FREQ:START {LestFreq} MHz"
+            Stepper_Stop  = f"FREQ:STOP 18 GHz"
+            Command_Marker_Start = f"CALC:{MarkDelt}:X {Position} MHz"
+            Command_Marker_Finish = f"CALC:{MarkDelt}:MAX:RIGH"
+            Name_Print = f"{LestFreq}-18"
         self.command_template([
             "*RST",
             f"{RBW}",
@@ -266,239 +259,17 @@ class MainProgram(tk.Tk):  # Herdando de Tk em vez de Toplevel
             "DISP:WIND:TRAC:MODE MAXH",
             f"{Stepper_Start}",
             f"{Stepper_Stop}"
-        ])
+        ])        
         time.sleep(5)
-        self.command_template([
-            "CALC:MARK1:MAX",
-            "CALC:DELT:X -10 MHz",
-            "CALC:DELT:MAX:LEFT"
-            ])
-        State_Print.append(f"30-{self.StartEntry.get()}")
-        print(State_Print)
-        time.sleep(2)
-        self.Print_Screen_Func(0)
+        self.command_template(["CALC:MARK1:MAX",f"{Command_Marker_Start}",f"{Command_Marker_Finish}"])
+        self.Print_Screen_Func(Name_Print)
         
-
-
-    def Command_Espur01(self):
-        start_freq = int(self.StartEntry.get())
-        start_freq_minus_10 = start_freq - 10 
-        start_Mark2_str = str(start_freq_minus_10) #servira para o modo Marker
-        self.command_template([
-            "*RST",
-            "BAND 100 kHz",
-            "BAND:VID 300 kHz",
-            "DISP:WIND:TRAC:Y:RLEV 20dBm",
-            "INP:ATT 40 DB",
-            "DISP:WIND:TRAC:MODE MAXH",
-            "FREQ:START 30 MHz",
-            f"FREQ:STOP {self.StartEntry.get()} MHz"
-        ])
-        time.sleep(5)
-        self.command_template([
-            "CALC:MARK1:MAX",
-            "CALC:DELT:X -10 MHz",
-            "CALC:DELT:MAX:LEFT"
-            ])
-        State_Print.append(f"30-{self.StartEntry.get()}")
-        print(State_Print)
-        time.sleep(2)
-        self.Print_Screen_Func(0)
-        
-    def Command_Espur02(self):
-        start_freq = int(self.StartEntry.get())
-        start_freq_minus_10 = start_freq - 10 
-        start_Mark2_str = str(start_freq_minus_10)
-        start_freq_minus_100 = start_freq - 100  
-        start_freq_minus_100_str = str(start_freq_minus_100)          
-        self.command_template([
-            "*RST",
-            "BAND 100 kHz",
-            "BAND:VID 300 kHz",
-            "DISP:WIND:TRAC:Y:RLEV 20dBm",
-            "INP:ATT 40 DB",
-            "DISP:WIND:TRAC:MODE MAXH",
-            f"FREQ:START {start_freq_minus_100_str} MHz",
-            f"FREQ:STOP {self.StartEntry.get()} MHz"
-        ])
-        time.sleep(5)
-        self.command_template([
-            "CALC:MARK1:MAX",
-            "CALC:DELT:X -10 MHz",
-            "CALC:DELT:MAX:LEFT"
-            ])     
-        State_Print.append(f"{start_freq_minus_100_str}-{self.StartEntry.get()}")
-        print(State_Print)
-        time.sleep(2)
-        self.Print_Screen_Func(1)
-
-    def Command_Espur03(self):
-        Final_freq = int(self.FinalEntry.get())
-        Final_freq_Plus_10 = Final_freq + 10          
-        Final_freq_Plus_100 = Final_freq + 100  
-        Final_freq_Plus_100_str = str(Final_freq_Plus_100)          
-        self.command_template([
-            "*RST",
-            "BAND 100 kHz",
-            "BAND:VID 300 kHz",
-            "DISP:WIND:TRAC:Y:RLEV 20dBm",
-            "INP:ATT 40 DB",
-            "DISP:WIND:TRAC:MODE MAXH",
-            f"FREQ:START {self.FinalEntry.get()} MHz",
-            f"FREQ:STOP {Final_freq_Plus_100_str} MHz"
-        ])
-        time.sleep(5)
-        self.command_template([
-            "CALC:MARK1:MAX",
-            "CALC:DELT:X 10 MHz",
-            "CALC:DELT:MAX:RIGH"
-            ])          
-        State_Print.append(f"{self.FinalEntry.get()}-{Final_freq_Plus_100_str}")
-        print(State_Print)
-        time.sleep(2)
-        self.Print_Screen_Func(2)
-
-    def Command_Espur04(self):
-        Final_freq = int(self.FinalEntry.get())
-        Final_freq_Plus_10 = Final_freq + 10           
-        self.command_template([
-                "*RST",
-                "BAND 100 kHz",
-                "BAND:VID 300 kHz",
-                "DISP:WIND:TRAC:Y:RLEV 20dBm",
-                "INP:ATT 40 DB",
-                "DISP:WIND:TRAC:MODE MAXH",
-                f"FREQ:START {self.FinalEntry.get()} MHz",
-                "FREQ:STOP 18 GHz"
-        ])      
-        self.command_template([
-            "CALC:MARK1:MAX",
-            "CALC:DELT:X 10 MHz",
-            "CALC:DELT:MAX:RIGH"
-            ])           
-        State_Print.append(f"{self.FinalEntry.get()}-18")
-        print(State_Print)
-        time.sleep(2)
-        self.Print_Screen_Func(3)
-
-    def Command_Espur01_5G(self):
-        start_freq = int(self.StartEntry.get())
-        start_freq_minus_10 = start_freq - 10 
-        start_Mark2_str = str(start_freq_minus_10) #servira para o modo Marker
-        self.command_template([
-            "*RST",
-            "BAND 1 MHz",
-            "BAND:VID 3 MHz",
-            "DISP:WIND:TRAC:Y:RLEV 20dBm",
-            "INP:ATT 40 DB",
-            "DISP:WIND:TRAC:MODE MAXH",
-            "FREQ:START 30 MHz",
-            f"FREQ:STOP {self.StartEntry.get()} MHz"
-        ])
-        time.sleep(5)
-        self.command_template([
-            "CALC:MARK1:MAX",
-            f"CALC:MARK2:X {start_Mark2_str} MHz",
-            "CALC:MARK2:MAX:LEFT"
-            ])
-        State_Print.append(f"30-{self.StartEntry.get()}")
-        print(State_Print)
-        time.sleep(2)
-        self.Print_Screen_Func(0)
-
-    def Command_Espur02_5G(self):
-        start_freq = int(self.StartEntry.get())
-        start_freq_minus_10 = start_freq - 10 
-        start_Mark2_str = str(start_freq_minus_10)
-        start_freq_minus_100 = start_freq - 100  
-        start_freq_minus_100_str = str(start_freq_minus_100)          
-        self.command_template([
-            "*RST",
-            "BAND 1 MHz",
-            "BAND:VID 3 MHz",
-            "DISP:WIND:TRAC:Y:RLEV 20dBm",
-            "INP:ATT 40 DB",
-            "DISP:WIND:TRAC:MODE MAXH",
-            f"FREQ:START {start_freq_minus_100_str} MHz",
-            f"FREQ:STOP {self.StartEntry.get()} MHz"
-        ])
-        time.sleep(5)
-        self.command_template([
-            "CALC:MARK1:MAX",
-            f"CALC:MARK2:X {start_Mark2_str} MHz",
-            "CALC:MARK2:MAX:LEFT"
-            ])     
-        State_Print.append(f"{start_freq_minus_100_str}-{self.StartEntry.get()}")
-        print(State_Print)
-        time.sleep(2)
-        self.Print_Screen_Func(1)
-
-    def Command_Espur03_5G(self):
-        Final_freq = int(self.FinalEntry.get())
-        Final_freq_Plus_10 = Final_freq + 10          
-        Final_freq_Plus_100 = Final_freq + 100  
-        Final_freq_Plus_100_str = str(Final_freq_Plus_100)          
-        self.command_template([
-            "*RST",
-            "BAND 1 MHz",
-            "BAND:VID 3 MHz",
-            "DISP:WIND:TRAC:Y:RLEV 20dBm",
-            "INP:ATT 40 DB",
-            "DISP:WIND:TRAC:MODE MAXH",
-            f"FREQ:START {self.FinalEntry.get()} MHz",
-            f"FREQ:STOP {Final_freq_Plus_100_str} MHz"
-        ])
-        time.sleep(5)
-        self.command_template([
-            "CALC:MARK1:MAX",
-            f"CALC:MARK2:X {Final_freq_Plus_10} MHz",
-            "CALC:MARK2:MAX:RIGH"
-            ])          
-        State_Print.append(f"{self.FinalEntry.get()}-{Final_freq_Plus_100_str}")
-        print(State_Print)
-        time.sleep(2)
-        self.Print_Screen_Func(2)
-
-    def Command_Espur04_5G(self):
-        Final_freq = int(self.FinalEntry.get())
-        Final_freq_Plus_10 = Final_freq + 10           
-        self.command_template([
-                "*RST",
-                "BAND 1 MHz",
-                "BAND:VID 3 MHz",
-                "DISP:WIND:TRAC:Y:RLEV 20dBm",
-                "INP:ATT 40 DB",
-                "DISP:WIND:TRAC:MODE MAXH",
-                f"FREQ:START {self.FinalEntry.get()} MHz",
-                "FREQ:STOP 18 GHz"
-        ])      
-        self.command_template([
-            "CALC:MARK1:MAX",
-            f"CALC:MARK2:X {Final_freq_Plus_10} MHz",
-            "CALC:MARK2:MAX:RIGH"
-            ])           
-        State_Print.append(f"{self.FinalEntry.get()}-18")
-        print(State_Print)
-        time.sleep(2)
-        self.Print_Screen_Func(3)
-
-
-
-
-    def execute_command(self, command_function):
-        try:
-            command_function()
-        except Exception as e:
-            messagebox.showerror("Error", f"Command Fail!\n{e}")
-
     def command_template(self, commands):
         for command in commands:
             self.instr.write_str(command)
-        #self.instr.go_to_local()
-
+            
     def Print_screen_File(self):
-        default_dir = r"C:\\"        
-
+        default_dir = r"C:\\"
         if messagebox.askyesno("Escolha do Diretorio", "Deseja escolher o local para salvar o print?"):
           self.save_dir = filedialog.askdirectory(title="Selecione o diretorio para salvar o print")
           if self.save_dir:
@@ -512,23 +283,18 @@ class MainProgram(tk.Tk):  # Herdando de Tk em vez de Toplevel
 
     def Print_Screen_Func(self,IndexPrint):
         try:
-            if self.ip_val:  # Verifica se ha um IP configurado
+            if self.ip_val:
                 try:
                     from datetime import datetime
                     timestamp = datetime.now().strftime("%d-%m-%Y_%H%M%S")
                     Protocolo = self.ProtocolEntry.get()
                     ModulationGet = self.ModulationChose.get()
-                    self.save_path = os.path.join(self.save_dir, f"ESP_{ModulationGet} {State_Print[IndexPrint]}_{Protocolo}_{timestamp}.png")                    
-                    # Conectar ao FSMR
-                    instr = RsInstrument(f'TCPIP::{self.ip_val}::INSTR', True, False)
-            
-                    # Enviar comando de captura de tela (SCPI generico, adaptar se necessario)
+                    self.save_path = os.path.join(self.save_dir, f"ESP_{ModulationGet} {IndexPrint}_{Protocolo}_{timestamp}.png")                    
+                    instr = RsInstrument(f'TCPIP::{self.ip_val}::INSTR', True, False)# Enviar comando de captura de tela (SCPI generico, adaptar se necessario)
                     instr.write_str('HCOP:DEST "MMEM"')  # Enviar print para a memoria interna
                     instr.write_str(f'MMEM:NAME "C:\\Temp\\screen.bmp"')  # Nome temporario no FSMR
                     instr.write_str('HCOP:IMM')  # Capturar a tela imediatamente
-            
-                    # Baixar o arquivo do FSMR
-                    instr.query_bin_block_to_file('MMEM:DATA? "C:\\Temp\\screen.bmp"', self.save_path)
+                    instr.query_bin_block_to_file('MMEM:DATA? "C:\\Temp\\screen.bmp"', self.save_path)# Baixar o arquivo do FSMR
                 except Exception as e:
                     messagebox.showerror("Erro", f"Falha ao salvar o print.\n{e}")
                 finally:
@@ -538,11 +304,8 @@ class MainProgram(tk.Tk):  # Herdando de Tk em vez de Toplevel
         except :
             messagebox.showerror("Erro", "IP nao configurado. Conecte-se a um instrumento primeiro.")
 
-
-
-
 def main():
-    app = MainProgram()  # Apenas cria a MainProgram
+    app = MainProgram() 
     app.mainloop()
 
 if __name__ == "__main__":
