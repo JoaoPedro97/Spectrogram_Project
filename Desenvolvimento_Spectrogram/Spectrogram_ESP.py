@@ -192,7 +192,7 @@ class MainProgram(tk.Tk):  # Herdando de Tk em vez de Toplevel
 
     def ModulationSelector(self):
         modulation = self.ModulationChose.get()
-        Bandwidth_MHz = 10
+        Bandwidth_MHz = 10  
         if "40" in modulation:
             Bandwidth_MHz = 30 # (40/2)+10 = 30 MHz
         elif "80" in modulation:

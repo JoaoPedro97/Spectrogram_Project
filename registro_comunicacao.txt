@@ -1,0 +1,6 @@
+Comando enviado: AT+TESTE1
+Resposta recebida: 
+Comando enviado: AT+TESTE2
+Resposta recebida: 
+Comando enviado: AT+REINICIAR
+Resposta recebida: 

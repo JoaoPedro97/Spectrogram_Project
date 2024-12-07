@@ -3,14 +3,7 @@
 
 #Alguns commandos: 
 # INST:SEL SAN = Seleciona a funcao spectrumm Analizer
-
-
-
-
 import re
-from asyncio.windows_events import NULL
-from codeop import CommandCompiler
-import dbm
 import time
 import csv
 from datetime import datetime
@@ -18,9 +11,6 @@ from tkinter import *
 import os
 import tkinter as tk
 from tkinter import filedialog, messagebox, OptionMenu, StringVar
-from token import COMMA
-from tokenize import String
-from unittest import result
 from RsInstrument.RsInstrument import RsInstrument
 
 TechnologyModulations = [
@@ -283,19 +273,19 @@ class MainProgram(tk.Tk):
         self.FrameConfig = LabelFrame(self.FramePreset, text="Configs", padx=10, pady=10)
         self.FrameConfig.grid(row=3, column=1, sticky="w",columnspan=3, padx=(0,10)) 
 
-        self.Ensaios5G_Label = Label(self.FrameConfig, text="5.2/5.4 GHz", font=("Calibri","12"))
+        self.Ensaios5G_Label = Label(self.FrameConfig, text="5.2/5.4 GHz", font=("Calibri","12"),state="disabled")
         self.Ensaios5G_Label.grid(row=0, column=0, sticky="w", padx=(0,10))
 
-        self.Check5GHz = tk.Checkbutton(self.FrameConfig,variable=self.Check_Prints)
+        self.Check5GHz = tk.Checkbutton(self.FrameConfig,variable=self.Check_Prints,state="disabled")
         self.Check5GHz.grid(row=0, column=1, sticky="w")  
 
-        self.REFLEVEL_Label = Label(self.FrameConfig, text="Ref Lev manual", font=("Calibri","12"))
+        self.REFLEVEL_Label = Label(self.FrameConfig, text="Ref Lev manual", font=("Calibri","12"),state="disabled")
         self.REFLEVEL_Label.grid(row=1, column=0, sticky="w", padx=(0,10))
 
         self.Amp_Select = OptionMenu(self.FrameConfig, self.RefLevel, *REF_LEV)
         self.Amp_Select.grid(row=1, column=1, sticky="e", padx=(0, 10))
 
-        self.CheckRefLev = tk.Checkbutton(self.FrameConfig,variable=self.CheckRefLevel)
+        self.CheckRefLev = tk.Checkbutton(self.FrameConfig,variable=self.CheckRefLevel,state="disabled")
         self.CheckRefLev.grid(row=1, column=2, sticky="w")  
 
 
@@ -358,10 +348,16 @@ class MainProgram(tk.Tk):
         Print_Finale = self.CheckPrint_Fina.get()               #
         Start = self.CheckFreqInic.get()                        #
         Center = self.CheckFreqCent.get()                       #
-        Finale = self.CheckFreqFina.get()
-        timetest = self.measure_execution_time(self.GeralTest,FreqStart,FreqCenter,FreqFinale,Print_Start,Print_Center,Print_Finale,Start,Center,Finale)
-        messagebox.showinfo("FIM",f"Concluido \n Tempo de teste: {timetest:.3f} Seg")
-
+        Finale = self.CheckFreqFina.get()                       #
+        try:
+            if self.ip_val:
+                timetest = self.measure_execution_time(self.GeralTest,FreqStart,FreqCenter,FreqFinale,Print_Start,Print_Center,Print_Finale,Start,Center,Finale)
+                messagebox.showinfo("FIM",f"Concluido \n Tempo de teste: {timetest:.3f} Seg")
+            else:
+                messagebox.showwarning("Erro ao conectar no analisador","Insira o IP do analisador a ser conectado!")
+        except Exception as e:
+            messagebox.showerror("Erro", f"Falha ao na execucao do programa.\n{e}")
+        
 
     def Start_Sequency(self,Freq,PrinScreen):
         self.Print_Screen_Func(0,False) #Ativa a pasta onde sera salvo os valores
@@ -429,7 +425,8 @@ class MainProgram(tk.Tk):
         if not ValueFinale:  
             messagebox.showinfo ("Frequencia Final da amostra","Frequencia Final da amostra Selecionada. Ajuste o ESE!")
             self.Start_Sequency(FinaleFreq,PrintFinale)
-
+        if ValueStart & ValueCenter & ValueFinale:
+            messagebox.showwarning ("Nenhuma frequencia selecionada","Selecione agluma frequencia para executar o programa!")
     def toggle_checkbox_Start(self):
         # Verifica o estado do primeiro checkbox
         if self.CheckFreqInic.get():

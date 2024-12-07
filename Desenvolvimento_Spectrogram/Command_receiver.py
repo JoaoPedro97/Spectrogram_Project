@@ -13,34 +13,48 @@ def measure_frequency():
     instr.write_str(f"SENS:FREQ:CW:AFC ONCE")
     time.sleep(3)
     frequency = instr.query_str(f"FREQ:CENT?")
-    return float(frequency)
+    # Limita o numero de caracteres da esquerda para direita em 9
+    frequency = float(str(frequency)[:9])
+    return int(frequency)
 
-# Configuracao inicial
-tuned_frequency = "469975000.0"
-data = []
-var = 0
-# Loop de medicao
-try:
-    while True:
+# Solicita a frequencia de operacao ao usuario
+operation_frequency = float(input("Digite a frequencia de operacao em Hz: "))
+
+# Lista para armazenar todas as medições
+all_measurements = []
+
+# Repetir o processo 3 vezes
+for repetition in range(3):
+    # Lista para armazenar as frequencias medidas em uma repetição
+    frequencies = []
+
+    # Realiza 4 medições
+    for i in range(4):
         rf_frequency = measure_frequency()
-        current_time = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
-        data.append([tuned_frequency, rf_frequency, current_time,var])
-        
-        var +=1
-        
-        print(f"Medicao {var}: Tuned Frequency: {tuned_frequency}, RF Frequency: {rf_frequency}, Time: {current_time}")
+        frequencies.append(rf_frequency)
+        print(f"Repeticao {repetition+1}, Medicao {i+1}: RF Frequency: {rf_frequency} Hz")
+        time.sleep(1)  # Esperar 1 segundo antes de medir novamente
 
-        # Salvar os dados em um CSV
-        df = pd.DataFrame(data, columns=["Tuned Frequency", "RF Frequency", "Time", "Num"])
-        df.to_csv("frequency_stability_469975000_GMSK_12k5Hz.csv", index=False)
-        
-        
-        
-        # Esperar 1 segundo antes de medir novamente
-        time.sleep(1)
-        
-except KeyboardInterrupt:
-    print("Medicao interrompida pelo usuario.")
+    # Calcula a media das frequencias medidas
+    average_frequency = sum(frequencies) / len(frequencies)
 
-finally:
-    instr.close()
+    # Calcula a variacao especificada
+    specified_variation = (10 / 1000000) * operation_frequency
+
+    # Calcula a variacao (diferenca entre maior e menor valor medido)
+    measured_variation = max(frequencies) - min(frequencies)
+
+    # Adiciona os resultados da repetição atual na lista geral
+    all_measurements.append(frequencies + [average_frequency, specified_variation, measured_variation])
+
+# Cria o DataFrame com os resultados
+df = pd.DataFrame(all_measurements, columns=["Frequencia 1", "Frequencia 2", "Frequencia 3", "Frequencia 4", "Frequencia Media", "Variacao Especificada", "Variacao"])
+
+# Salva o resultado em um arquivo CSV
+csv_filename = f"Estabilidade_Frequencia-{int(operation_frequency)}.csv"
+df.to_csv(csv_filename, index=False, sep=';')
+
+print(f"Resultados salvos em {csv_filename}")
+
+# Fecha a conexao com o instrumento
+instr.close()
