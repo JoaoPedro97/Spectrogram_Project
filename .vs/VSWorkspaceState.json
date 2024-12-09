@@ -2,9 +2,10 @@
   "ExpandedNodes": [
     "",
     "\\Desenvolvimento_Spectrogram",
+    "\\Desenvolvimento_Spectrogram\\Controlador HCI",
     "\\logs",
     "\\Spectrogram_Simple"
   ],
-  "SelectedNode": "\\Desenvolvimento_Spectrogram\\Spectrogram_WiFi.py",
+  "SelectedNode": "\\Desenvolvimento_Spectrogram\\Controlador HCI\\AutoTestBluetooth.py",
   "PreviewInSolutionExplorer": false
 }
