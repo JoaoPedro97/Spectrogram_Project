@@ -36,7 +36,7 @@ REF_LEV = [
 class MainProgram(tk.Tk):
     def __init__(self):
         super().__init__()
-        self.geometry("450x800")
+        self.geometry("550x800")
         self.title("Spectrogram Wi-Fi")
         self.create_widgets_TestConnection()
         self.Data_Screen()
@@ -116,13 +116,14 @@ class MainProgram(tk.Tk):
         self.FilePath.grid(row=2, column=0,columnspan=2, sticky="we", padx=(0,10))
 
     def Preset_Screen(self):
+        self.CheckPot5G_bool = tk.BooleanVar()
         self.Check_Largura6dB = tk.BooleanVar()
         self.Check_Largura26dB = tk.BooleanVar()
         self.Check_PotPicMax = tk.BooleanVar()
         self.Check_Densidade_Spec = tk.BooleanVar()
         self.Check_Esp = tk.BooleanVar()
         self.Check_Prints = tk.BooleanVar()
-        
+
         self.CheckFreqInic = tk.BooleanVar()
         self.CheckFreqCent = tk.BooleanVar()
         self.CheckFreqFina = tk.BooleanVar()
@@ -154,36 +155,47 @@ class MainProgram(tk.Tk):
 
         self.FrameTest_Select = LabelFrame(self.FramePreset, text="Selecao dos testes", padx=10, pady=10)
         self.FrameTest_Select.grid(row=1, column=0, sticky="w",columnspan=2, padx=(0,10)) 
+
+        # Potencia na saida do transmissor
+        self.Pot_5G_Label = Label(self.FrameTest_Select, text="Potencia na saida do transmissor", font=("Calibri","12"),state="disabled")
+        self.Pot_5G_Label.grid(row=0, column=0, sticky="w", padx=(0,10))
+        
+        self.CheckPot_5G = tk.Checkbutton(self.FrameTest_Select,variable=self.CheckPot5G_bool,state="disabled")
+        self.CheckPot_5G.grid(row=0, column=5, sticky="w")  
+
+
+
         # Largura de faixa a 6dBm  
         self.Larg6dB_Label = Label(self.FrameTest_Select, text="Largura de faixa a 6dB", font=("Calibri","12"))
-        self.Larg6dB_Label.grid(row=0, column=0, sticky="w", padx=(0,10))
+        self.Larg6dB_Label.grid(row=1, column=0, sticky="w", padx=(0,10))
         
         self.CheckLarg6dB = tk.Checkbutton(self.FrameTest_Select,variable=self.Check_Largura6dB)
-        self.CheckLarg6dB.grid(row=0, column=5, sticky="w")  
+        self.CheckLarg6dB.grid(row=1, column=5, sticky="w")  
+
         # Largura de faixa a 26dBm  
         self.Larg26dB_Label = Label(self.FrameTest_Select, text="Largura de faixa a 26dB", font=("Calibri","12"))
-        self.Larg26dB_Label.grid(row=1, column=0, sticky="w", padx=(0,10))
+        self.Larg26dB_Label.grid(row=2, column=0, sticky="w", padx=(0,10))
         
         self.CheckLarg26dB = tk.Checkbutton(self.FrameTest_Select,variable=self.Check_Largura26dB)
-        self.CheckLarg26dB.grid(row=1, column=5, sticky="w")  
+        self.CheckLarg26dB.grid(row=2, column=5, sticky="w")  
         # Potencia de pico maximo
         self.PotPic_Label = Label(self.FrameTest_Select, text="Potencia de pico maximo", font=("Calibri","12"))
-        self.PotPic_Label.grid(row=2, column=0, sticky="w", padx=(0,10))
+        self.PotPic_Label.grid(row=3, column=0, sticky="w", padx=(0,10))
         
         self.CheckPotPic = tk.Checkbutton(self.FrameTest_Select,variable=self.Check_PotPicMax)
-        self.CheckPotPic.grid(row=2, column=5, sticky="w")  
+        self.CheckPotPic.grid(row=3, column=5, sticky="w")  
         # Densidade
         self.Densidade_Label = Label(self.FrameTest_Select, text="Densidade Espectral", font=("Calibri","12"))
-        self.Densidade_Label.grid(row=3, column=0, sticky="w", padx=(0,10))
+        self.Densidade_Label.grid(row=4, column=0, sticky="w", padx=(0,10))
         
         self.CheckDensid_Esp = tk.Checkbutton(self.FrameTest_Select,variable=self.Check_Densidade_Spec)
-        self.CheckDensid_Esp.grid(row=3, column=5, sticky="w")  
+        self.CheckDensid_Esp.grid(row=4, column=5, sticky="w")  
         # Espurios
         self.Espurios_Label = Label(self.FrameTest_Select, text="Espurios", font=("Calibri","12"))
-        self.Espurios_Label.grid(row=4, column=0, sticky="w", padx=(0,10))
+        self.Espurios_Label.grid(row=5, column=0, sticky="w", padx=(0,10))
         
         self.CheckEspurios = tk.Checkbutton(self.FrameTest_Select,variable=self.Check_Esp)
-        self.CheckEspurios.grid(row=4, column=5, sticky="w")  
+        self.CheckEspurios.grid(row=5, column=5, sticky="w")  
         
 
         #Label Frequencia
@@ -316,7 +328,7 @@ class MainProgram(tk.Tk):
             f"FREQ:CENT {FREQ} MHz",
             ListTRACE[TRACE],
             f"INP:ATT {ATT} DB",
-            f"DISP:WIND:TRAC:Y:RLEV {REFLEV}dbm",
+            f"DISP:WIND:TRAC:Y:RLEV {REFLEV}",
             f"FREQ:SPAN {SPAN} MHz",
             "INIT:IMM"
         ])
@@ -377,23 +389,28 @@ class MainProgram(tk.Tk):
             self.Bandwidth = 20.0
             
         #funcao das opcoes marcadas:
+        if self.CheckPot5G_bool.get():
+            self.PresetsforTest(0,"1",2,"3",2,str(float(self.Bandwidth) * 1.5),0,"20",self.ReferenceSelector,100,0,Freq,2,2)
+            self.Print_Screen_Func("Potencia na saida do transmissor",PrinScreen)
+            self.save_test_results(f"{self.tech_path}\Potencia na saida do transmissor.csv",Freq,self.Results,0)
+            self.Results = None
         if self.Check_Largura6dB.get():
-            self.PresetsforTest(0,"100",1,"300",1,str(float(self.Bandwidth) * 1.5),0,"20","40",0,1,Freq,1,0)
+            self.PresetsforTest(0,"100",1,"300",1,str(float(self.Bandwidth) * 1.5),0,"20",self.ReferenceSelector,0,1,Freq,1,0)
             self.Print_Screen_Func("Largura de faixa a 6dB",PrinScreen)
             self.save_test_results(f"{self.tech_path}\Largura_6dB.csv",Freq,self.Results,0)      
             self.Results = None
         if self.Check_Largura26dB.get():
-            self.PresetsforTest(0,"100",1,"300",1,str(float(self.Bandwidth) * 1.5),0,"20","40",0,1,Freq,1,1)  
+            self.PresetsforTest(0,"100",1,"300",1,str(float(self.Bandwidth) * 1.5),0,"20",self.ReferenceSelector,0,1,Freq,1,1)  
             self.Print_Screen_Func("Largura de faixa a 26dB",PrinScreen)   
             self.save_test_results(f"{self.tech_path}\Largura_26dB.csv",Freq,self.Results,0)
             self.Results = None
         if self.Check_PotPicMax.get():
-            self.PresetsforTest(0,"1",2,"3",2,str(float(self.Bandwidth) * 1.5),0,"20","40",0,1,Freq,1,2)             
+            self.PresetsforTest(0,"1",2,"3",2,str(float(self.Bandwidth) * 1.5),0,"20",self.ReferenceSelector,0,1,Freq,1,2)             
             self.Print_Screen_Func("Potencia de pico",PrinScreen)
             self.save_test_results(f"{self.tech_path}\Potencia de pico maximo.csv",Freq,self.Results,1)
             self.Results = None
         if self.Check_Densidade_Spec.get():
-            self.PresetsforTest(0,"3",1,"10",1,str(float(self.Bandwidth) * 1.5),0,"20","40",3,0,Freq,1,3)  
+            self.PresetsforTest(0,"3",1,"10",1,str(float(self.Bandwidth) * 1.5),0,"20",self.ReferenceSelector,3,0,Freq,1,3)  
             self.Print_Screen_Func("Densidade espectral",PrinScreen)                    
             self.save_test_results(f"{self.tech_path}\Densidade espectral de potencia.csv",Freq,f"{float(self.Results):.3f}",1)
             self.Results = None
@@ -415,6 +432,12 @@ class MainProgram(tk.Tk):
         print(f"Tempo de execucao: {execution_time:.3f} segundos")
         return execution_time
     
+    def ReferenceSelector(self):
+        if self.CheckRefLevel:
+            return self.RefLevel.get()
+        else:
+            return "40 dBm"
+
     def GeralTest(self,StartFreq,CenterFreq,FinaleFreq,PrintStart,PrintCenter,PrintFinale,ValueStart,ValueCenter,ValueFinale):
         if not ValueStart:
             messagebox.showinfo ("Frequencia inicial da amostra","Frequencia inicial da amostra Selecionada. Ajuste o ESE!")
@@ -463,11 +486,29 @@ class MainProgram(tk.Tk):
     
     def toggle_checkbox_5G(self):
         if self.Check5G.get():
-            self.CheckFrequenciaFinalPrint.config(state="disabled")
+            self.CheckPot_5G.config(state="normal")
+            self.Pot_5G_Label.config(state="normal")
+            self.CheckLarg6dB.config(state="disabled")
+            self.CheckLarg26dB.config(state="disabled")
+            self.CheckPotPic.config(state="disabled")
+            self.CheckDensid_Esp.config(state="disabled")
+            self.CheckEspurios.config(state="disabled")
+            self.Check_Largura6dB.set(False)
+            self.Check_Largura26dB .set(False)
+            self.Check_PotPicMax.set(False)
+            self.Check_Densidade_Spec.set(False)
+            self.Check_Esp.set(False)
+            
         else:   
-
-
-
+            self.CheckLarg6dB.config(state="normal")
+            self.CheckLarg26dB.config(state="normal")
+            self.CheckPotPic.config(state="normal")
+            self.CheckDensid_Esp.config(state="normal")
+            self.CheckEspurios.config(state="normal")
+            self.CheckPot_5G.config(state="disabled")
+            self.Pot_5G_Label.config(state="disabled")
+            self.CheckPot5G_bool.set(False)
+            
 
 
     def TimerCount_Void(self,Switch):
@@ -494,7 +535,7 @@ class MainProgram(tk.Tk):
         corrected_value_in_mhz = value_in_mhz / 1
     
     # Formata o valor com a virgula como separador de milhar e ponto como separador decimal
-        formatted_value = f"{corrected_value_in_mhz:,.3f}".replace('.', ',')
+        formatted_value = f"{corrected_value_in_mhz:,.4f}".replace('.', ',')
         return formatted_value
 
     def command_template(self, commands):
