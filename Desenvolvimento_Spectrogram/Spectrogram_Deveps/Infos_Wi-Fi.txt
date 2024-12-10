@@ -1,0 +1,3 @@
+O "Spectrogram_WiFi" ainda precisa ser melhor organizado. os apontamentos são para simplifacar as operações de funções e até mesmo redundancias do código. 
+
+Ainda falta parte do código, ao completar 100% do processo de entrega, falta nas revisões o processo de polimento.

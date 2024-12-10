@@ -11,6 +11,7 @@ from tkinter import *
 import os
 import tkinter as tk
 from tkinter import filedialog, messagebox, OptionMenu, StringVar
+from token import COMMA
 from RsInstrument.RsInstrument import RsInstrument
 
 TechnologyModulations = [
@@ -125,6 +126,8 @@ class MainProgram(tk.Tk):
         self.CheckFreqInic = tk.BooleanVar()
         self.CheckFreqCent = tk.BooleanVar()
         self.CheckFreqFina = tk.BooleanVar()
+        
+        self.Check5G = tk.BooleanVar()
         
         self.CheckPrint_Init = tk.BooleanVar()
         self.CheckPrint_Cent = tk.BooleanVar()
@@ -273,19 +276,19 @@ class MainProgram(tk.Tk):
         self.FrameConfig = LabelFrame(self.FramePreset, text="Configs", padx=10, pady=10)
         self.FrameConfig.grid(row=3, column=1, sticky="w",columnspan=3, padx=(0,10)) 
 
-        self.Ensaios5G_Label = Label(self.FrameConfig, text="5.2/5.4 GHz", font=("Calibri","12"),state="disabled")
+        self.Ensaios5G_Label = Label(self.FrameConfig, text="5.2/5.4 GHz", font=("Calibri","12"))
         self.Ensaios5G_Label.grid(row=0, column=0, sticky="w", padx=(0,10))
 
-        self.Check5GHz = tk.Checkbutton(self.FrameConfig,variable=self.Check_Prints,state="disabled")
+        self.Check5GHz = tk.Checkbutton(self.FrameConfig,variable=self.Check5G, command=self.toggle_checkbox_5G)
         self.Check5GHz.grid(row=0, column=1, sticky="w")  
 
-        self.REFLEVEL_Label = Label(self.FrameConfig, text="Ref Lev manual", font=("Calibri","12"),state="disabled")
+        self.REFLEVEL_Label = Label(self.FrameConfig, text="Ref Lev manual", font=("Calibri","12"))
         self.REFLEVEL_Label.grid(row=1, column=0, sticky="w", padx=(0,10))
 
         self.Amp_Select = OptionMenu(self.FrameConfig, self.RefLevel, *REF_LEV)
         self.Amp_Select.grid(row=1, column=1, sticky="e", padx=(0, 10))
 
-        self.CheckRefLev = tk.Checkbutton(self.FrameConfig,variable=self.CheckRefLevel,state="disabled")
+        self.CheckRefLev = tk.Checkbutton(self.FrameConfig,variable=self.CheckRefLevel)
         self.CheckRefLev.grid(row=1, column=2, sticky="w")  
 
 
@@ -397,8 +400,6 @@ class MainProgram(tk.Tk):
         if self.Check_Esp.get():
             messagebox.showinfo ("Desponivel em breve","Use a automacao Spectrogram_ESP!")
            
-     
-
     def measure_execution_time(self, func, *args, **kwargs): #Retorna o tempo de execucao da operacao total
         if not callable(func):
             raise ValueError("O parametro 'func' deve ser uma funcao ou metodo chamavel.")
@@ -414,7 +415,6 @@ class MainProgram(tk.Tk):
         print(f"Tempo de execucao: {execution_time:.3f} segundos")
         return execution_time
     
-
     def GeralTest(self,StartFreq,CenterFreq,FinaleFreq,PrintStart,PrintCenter,PrintFinale,ValueStart,ValueCenter,ValueFinale):
         if not ValueStart:
             messagebox.showinfo ("Frequencia inicial da amostra","Frequencia inicial da amostra Selecionada. Ajuste o ESE!")
@@ -427,6 +427,7 @@ class MainProgram(tk.Tk):
             self.Start_Sequency(FinaleFreq,PrintFinale)
         if ValueStart & ValueCenter & ValueFinale:
             messagebox.showwarning ("Nenhuma frequencia selecionada","Selecione agluma frequencia para executar o programa!")
+            
     def toggle_checkbox_Start(self):
         # Verifica o estado do primeiro checkbox
         if self.CheckFreqInic.get():
@@ -437,6 +438,7 @@ class MainProgram(tk.Tk):
         else:
             self.CheckFrequenciaInicialPrint.config(state="normal")  # Habilita o segundo checkbox
             self.Frequencia_Inicial_Entry.config(state="normal")
+            
     def toggle_checkbox_Center(self):
         # Verifica o estado do primeiro checkbox
         if self.CheckFreqCent.get():
@@ -447,6 +449,7 @@ class MainProgram(tk.Tk):
         else:
             self.CheckFrequenciaCentralPrint.config(state="normal")  # Habilita o segundo checkbox
             self.Frequencia_Central_Entry.config(state="normal")
+            
     def toggle_checkbox_Finale(self):
         # Verifica o estado do primeiro checkbox
         if self.CheckFreqFina.get():
@@ -457,6 +460,14 @@ class MainProgram(tk.Tk):
         else:
             self.CheckFrequenciaFinalPrint.config(state="normal")  # Habilita o segundo checkbox
             self.Frequencia_Final_Entry.config(state="normal")
+    
+    def toggle_checkbox_5G(self):
+        if self.Check5G.get():
+            self.CheckFrequenciaFinalPrint.config(state="disabled")
+        else:   
+
+
+
 
 
     def TimerCount_Void(self,Switch):

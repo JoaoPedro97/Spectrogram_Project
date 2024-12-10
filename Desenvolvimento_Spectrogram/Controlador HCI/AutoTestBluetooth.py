@@ -62,7 +62,8 @@ Modulation_Bluetooth = ["GFSK",
 class MainProgram(tk.Tk):  # Herdando de Tk em vez de Toplevel
     def __init__(self):
         super().__init__()  # Inicializa o Tk
-        self.geometry uetooth destroyer. Monster edition")
+        self.geometry("450x800")
+        self.title("Bluetooth destroyer. Monster edition")
 
         self.create_widgets_TestConnection()
         #elf.create_Ensaios_Bluetooth()

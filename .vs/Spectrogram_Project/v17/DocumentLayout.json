@@ -3,52 +3,32 @@
   "WorkspaceRootPath": "C:\\Users\\Jo\u00E3o Pedro\\Documents\\GitHub\\Spectrogram_Project\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Jo\u00E3o Pedro\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Controlador HCI\\AutoTestBluetooth.py||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Desenvolvimento_Spectrogram\\Controlador HCI\\AutoTestBluetooth.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Jo\u00E3o Pedro\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Spectrogram_Deveps\\Spectrogram_WiFi.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Desenvolvimento_Spectrogram\\Spectrogram_Deveps\\Spectrogram_WiFi.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Jo\u00E3o Pedro\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Spectrogram_Deveps\\Infos_Wi-Fi.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Desenvolvimento_Spectrogram\\Spectrogram_Deveps\\Infos_Wi-Fi.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Jo\u00E3o Pedro\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Spectrogram_Deveps\\CodigoPolido.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Desenvolvimento_Spectrogram\\Spectrogram_Deveps\\CodigoPolido.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Jo\u00E3o Pedro\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Spectrogram_Deveps\\Devep.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Desenvolvimento_Spectrogram\\Spectrogram_Deveps\\Devep.py||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Jo\u00E3o Pedro\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Controlador HCI\\Teste de envio de comandos .py||{8B382828-6202-11D1-8870-0000F87579D2}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Desenvolvimento_Spectrogram\\Controlador HCI\\Teste de envio de comandos .py||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Jo\u00E3o Pedro\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Controlador HCI\\COM_MVP.py||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Desenvolvimento_Spectrogram\\Controlador HCI\\COM_MVP.py||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Jo\u00E3o Pedro\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Controlador HCI\\COM_Tester.py||{8B382828-6202-11D1-8870-0000F87579D2}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Desenvolvimento_Spectrogram\\Controlador HCI\\COM_Tester.py||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Jo\u00E3o Pedro\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Medidas_potencia10029.py||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Desenvolvimento_Spectrogram\\Medidas_potencia10029.py||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Jo\u00E3o Pedro\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Devep.py||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Desenvolvimento_Spectrogram\\Devep.py||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Jo\u00E3o Pedro\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Spectrogram_Beta.py||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Desenvolvimento_Spectrogram\\Spectrogram_Beta.py||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Jo\u00E3o Pedro\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Spectrogram_ESP.py||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Desenvolvimento_Spectrogram\\Spectrogram_ESP.py||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Jo\u00E3o Pedro\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Spectrogram_WiFi.py||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Desenvolvimento_Spectrogram\\Spectrogram_WiFi.py||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Jo\u00E3o Pedro\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Command_receiver.py||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Desenvolvimento_Spectrogram\\Command_receiver.py||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Jo\u00E3o Pedro\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Test_Script_USB.py||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Desenvolvimento_Spectrogram\\Test_Script_USB.py||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Jo\u00E3o Pedro\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Teste_OBW_Request.py||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Desenvolvimento_Spectrogram\\Teste_OBW_Request.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Jo\u00E3o Pedro\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Controlador HCI\\COM_MVP.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Desenvolvimento_Spectrogram\\Controlador HCI\\COM_MVP.py||{8B382828-6202-11D1-8870-0000F87579D2}"
     }
   ],
   "DocumentGroupContainers": [
@@ -58,7 +38,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 291,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -75,32 +55,71 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "Infos_Wi-Fi.txt",
+              "DocumentMoniker": "C:\\Users\\Jo\u00E3o Pedro\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Spectrogram_Deveps\\Infos_Wi-Fi.txt",
+              "RelativeDocumentMoniker": "Desenvolvimento_Spectrogram\\Spectrogram_Deveps\\Infos_Wi-Fi.txt",
+              "ToolTip": "C:\\Users\\Jo\u00E3o Pedro\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Spectrogram_Deveps\\Infos_Wi-Fi.txt",
+              "RelativeToolTip": "Desenvolvimento_Spectrogram\\Spectrogram_Deveps\\Infos_Wi-Fi.txt",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2024-12-09T20:42:58.565Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Spectrogram_WiFi.py",
+              "DocumentMoniker": "C:\\Users\\Jo\u00E3o Pedro\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Spectrogram_Deveps\\Spectrogram_WiFi.py",
+              "RelativeDocumentMoniker": "Desenvolvimento_Spectrogram\\Spectrogram_Deveps\\Spectrogram_WiFi.py",
+              "ToolTip": "C:\\Users\\Jo\u00E3o Pedro\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Spectrogram_Deveps\\Spectrogram_WiFi.py",
+              "RelativeToolTip": "Desenvolvimento_Spectrogram\\Spectrogram_Deveps\\Spectrogram_WiFi.py",
+              "ViewState": "AQIAALQBAAAAAAAAAAAEwL4BAABCAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2024-12-09T20:42:15.38Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CodigoPolido.py",
+              "DocumentMoniker": "C:\\Users\\Jo\u00E3o Pedro\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Spectrogram_Deveps\\CodigoPolido.py",
+              "RelativeDocumentMoniker": "Desenvolvimento_Spectrogram\\Spectrogram_Deveps\\CodigoPolido.py",
+              "ToolTip": "C:\\Users\\Jo\u00E3o Pedro\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Spectrogram_Deveps\\CodigoPolido.py",
+              "RelativeToolTip": "Desenvolvimento_Spectrogram\\Spectrogram_Deveps\\CodigoPolido.py",
+              "ViewState": "AQIAAFoAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2024-12-09T20:41:52.852Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "Teste de envio de comandos .py",
               "DocumentMoniker": "C:\\Users\\Jo\u00E3o Pedro\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Controlador HCI\\Teste de envio de comandos .py",
               "RelativeDocumentMoniker": "Desenvolvimento_Spectrogram\\Controlador HCI\\Teste de envio de comandos .py",
               "ToolTip": "C:\\Users\\Jo\u00E3o Pedro\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Controlador HCI\\Teste de envio de comandos .py",
               "RelativeToolTip": "Desenvolvimento_Spectrogram\\Controlador HCI\\Teste de envio de comandos .py",
-              "ViewState": "AQIAABgAAAAAAAAAAAAAAA8AAAAaAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAaAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
               "WhenOpened": "2024-12-09T16:25:20.064Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 6,
               "Title": "COM_MVP.py",
               "DocumentMoniker": "C:\\Users\\Jo\u00E3o Pedro\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Controlador HCI\\COM_MVP.py",
               "RelativeDocumentMoniker": "Desenvolvimento_Spectrogram\\Controlador HCI\\COM_MVP.py",
               "ToolTip": "C:\\Users\\Jo\u00E3o Pedro\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Controlador HCI\\COM_MVP.py",
               "RelativeToolTip": "Desenvolvimento_Spectrogram\\Controlador HCI\\COM_MVP.py",
-              "ViewState": "AQIAADAAAAAAAAAAAAAAAD0AAAAnAAAA",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAD8AAAAUAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
               "WhenOpened": "2024-12-09T14:27:03.222Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "COM_Tester.py",
               "DocumentMoniker": "C:\\Users\\Jo\u00E3o Pedro\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Controlador HCI\\COM_Tester.py",
               "RelativeDocumentMoniker": "Desenvolvimento_Spectrogram\\Controlador HCI\\COM_Tester.py",
@@ -113,125 +132,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Medidas_potencia10029.py",
-              "DocumentMoniker": "C:\\Users\\Jo\u00E3o Pedro\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Medidas_potencia10029.py",
-              "RelativeDocumentMoniker": "Desenvolvimento_Spectrogram\\Medidas_potencia10029.py",
-              "ToolTip": "C:\\Users\\Jo\u00E3o Pedro\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Medidas_potencia10029.py",
-              "RelativeToolTip": "Desenvolvimento_Spectrogram\\Medidas_potencia10029.py",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAADAAAAAkAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
-              "WhenOpened": "2024-12-06T19:11:36.64Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 3,
               "Title": "Devep.py",
-              "DocumentMoniker": "C:\\Users\\Jo\u00E3o Pedro\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Devep.py",
-              "RelativeDocumentMoniker": "Desenvolvimento_Spectrogram\\Devep.py",
-              "ToolTip": "C:\\Users\\Jo\u00E3o Pedro\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Devep.py",
-              "RelativeToolTip": "Desenvolvimento_Spectrogram\\Devep.py",
+              "DocumentMoniker": "C:\\Users\\Jo\u00E3o Pedro\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Spectrogram_Deveps\\Devep.py",
+              "RelativeDocumentMoniker": "Desenvolvimento_Spectrogram\\Spectrogram_Deveps\\Devep.py",
+              "ToolTip": "C:\\Users\\Jo\u00E3o Pedro\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Spectrogram_Deveps\\Devep.py",
+              "RelativeToolTip": "Desenvolvimento_Spectrogram\\Spectrogram_Deveps\\Devep.py",
               "ViewState": "AQIAAAwCAAAAAAAAAAAUwDACAAAuAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
               "WhenOpened": "2024-11-06T14:50:21.355Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Spectrogram_ESP.py",
-              "DocumentMoniker": "C:\\Users\\Jo\u00E3o Pedro\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Spectrogram_ESP.py",
-              "RelativeDocumentMoniker": "Desenvolvimento_Spectrogram\\Spectrogram_ESP.py",
-              "ToolTip": "C:\\Users\\Jo\u00E3o Pedro\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Spectrogram_ESP.py",
-              "RelativeToolTip": "Desenvolvimento_Spectrogram\\Spectrogram_ESP.py",
-              "ViewState": "AQIAAFAAAAAAAAAAAAAUwMIAAAAcAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
-              "WhenOpened": "2024-12-02T18:54:44.103Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Spectrogram_Beta.py",
-              "DocumentMoniker": "C:\\Users\\Jo\u00E3o Pedro\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Spectrogram_Beta.py",
-              "RelativeDocumentMoniker": "Desenvolvimento_Spectrogram\\Spectrogram_Beta.py",
-              "ToolTip": "C:\\Users\\Jo\u00E3o Pedro\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Spectrogram_Beta.py",
-              "RelativeToolTip": "Desenvolvimento_Spectrogram\\Spectrogram_Beta.py",
-              "ViewState": "AQIAAK0BAAAAAAAAAAAUwNEBAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
-              "WhenOpened": "2024-11-29T00:07:32.715Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "Teste_OBW_Request.py",
-              "DocumentMoniker": "C:\\Users\\Jo\u00E3o Pedro\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Teste_OBW_Request.py",
-              "RelativeDocumentMoniker": "Desenvolvimento_Spectrogram\\Teste_OBW_Request.py",
-              "ToolTip": "C:\\Users\\Jo\u00E3o Pedro\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Teste_OBW_Request.py",
-              "RelativeToolTip": "Desenvolvimento_Spectrogram\\Teste_OBW_Request.py",
-              "ViewState": "AQIAAIQAAAAAAAAAAAAAAJsAAAAMAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
-              "WhenOpened": "2024-12-03T14:34:40.631Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Command_receiver.py",
-              "DocumentMoniker": "C:\\Users\\Jo\u00E3o Pedro\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Command_receiver.py",
-              "RelativeDocumentMoniker": "Desenvolvimento_Spectrogram\\Command_receiver.py",
-              "ToolTip": "C:\\Users\\Jo\u00E3o Pedro\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Command_receiver.py",
-              "RelativeToolTip": "Desenvolvimento_Spectrogram\\Command_receiver.py",
-              "ViewState": "AQIAABsAAAAAAAAAAAAAACwAAAAlAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
-              "WhenOpened": "2024-12-06T15:10:06.218Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "Test_Script_USB.py",
-              "DocumentMoniker": "C:\\Users\\Jo\u00E3o Pedro\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Test_Script_USB.py",
-              "RelativeDocumentMoniker": "Desenvolvimento_Spectrogram\\Test_Script_USB.py",
-              "ToolTip": "C:\\Users\\Jo\u00E3o Pedro\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Test_Script_USB.py",
-              "RelativeToolTip": "Desenvolvimento_Spectrogram\\Test_Script_USB.py",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABcAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
-              "WhenOpened": "2024-12-05T17:06:54.814Z",
-              "EditorCaption": ""
-            }
-          ]
-        },
-        {
-          "DockedWidth": 277,
-          "SelectedChildIndex": 1,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Spectrogram_WiFi.py",
-              "DocumentMoniker": "C:\\Users\\Jo\u00E3o Pedro\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Spectrogram_WiFi.py",
-              "RelativeDocumentMoniker": "Desenvolvimento_Spectrogram\\Spectrogram_WiFi.py",
-              "ToolTip": "C:\\Users\\Jo\u00E3o Pedro\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Spectrogram_WiFi.py",
-              "RelativeToolTip": "Desenvolvimento_Spectrogram\\Spectrogram_WiFi.py",
-              "ViewState": "AQIAAKIBAAAAAAAAAAAAAKkBAAAGAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
-              "WhenOpened": "2024-12-02T19:14:44.022Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "AutoTestBluetooth.py",
-              "DocumentMoniker": "C:\\Users\\Jo\u00E3o Pedro\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Controlador HCI\\AutoTestBluetooth.py",
-              "RelativeDocumentMoniker": "Desenvolvimento_Spectrogram\\Controlador HCI\\AutoTestBluetooth.py",
-              "ToolTip": "C:\\Users\\Jo\u00E3o Pedro\\Documents\\GitHub\\Spectrogram_Project\\Desenvolvimento_Spectrogram\\Controlador HCI\\AutoTestBluetooth.py",
-              "RelativeToolTip": "Desenvolvimento_Spectrogram\\Controlador HCI\\AutoTestBluetooth.py",
-              "ViewState": "AQIAADYAAAAAAAAAAAAAAEEAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
-              "WhenOpened": "2024-12-09T17:02:59.828Z",
               "EditorCaption": ""
             }
           ]
