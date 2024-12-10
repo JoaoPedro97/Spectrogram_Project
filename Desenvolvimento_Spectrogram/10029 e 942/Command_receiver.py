@@ -17,18 +17,22 @@ def measure_frequency():
     frequency = float(str(frequency)[:9])
     return int(frequency)
 
-# Solicita a frequencia de operacao ao usuario
-operation_frequency = float(input("Digite a frequencia de operacao em Hz: "))
+# Tentar obter o valor da frequencia do usuario
+try:
+    operation_frequency = float(input("Digite a frequencia de operacao em Hz: "))
+except RuntimeError:
+    print("Erro: Nao foi possivel capturar a entrada do usuario. Usando valor padrao.")
+    operation_frequency = 1000000  # Valor padrao para fallback
 
-# Lista para armazenar todas as medições
+# Lista para armazenar todas as medicoes
 all_measurements = []
 
 # Repetir o processo 3 vezes
 for repetition in range(3):
-    # Lista para armazenar as frequencias medidas em uma repetição
+    # Lista para armazenar as frequencias medidas em uma repeticao
     frequencies = []
 
-    # Realiza 4 medições
+    # Realiza 4 medicoes
     for i in range(4):
         rf_frequency = measure_frequency()
         frequencies.append(rf_frequency)
@@ -44,15 +48,26 @@ for repetition in range(3):
     # Calcula a variacao (diferenca entre maior e menor valor medido)
     measured_variation = max(frequencies) - min(frequencies)
 
-    # Adiciona os resultados da repetição atual na lista geral
+    # Adiciona os resultados da repeticao atual na lista geral
     all_measurements.append(frequencies + [average_frequency, specified_variation, measured_variation])
 
 # Cria o DataFrame com os resultados
-df = pd.DataFrame(all_measurements, columns=["Frequencia 1", "Frequencia 2", "Frequencia 3", "Frequencia 4", "Frequencia Media", "Variacao Especificada", "Variacao"])
+df = pd.DataFrame(
+    all_measurements,
+    columns=[
+        "Frequencia 1",
+        "Frequencia 2",
+        "Frequencia 3",
+        "Frequencia 4",
+        "Frequencia Media",
+        "Variacao Especificada",
+        "Variacao",
+    ],
+)
 
 # Salva o resultado em um arquivo CSV
 csv_filename = f"Estabilidade_Frequencia-{int(operation_frequency)}.csv"
-df.to_csv(csv_filename, index=False, sep=';')
+df.to_csv(csv_filename, index=False, sep=";")
 
 print(f"Resultados salvos em {csv_filename}")
 

@@ -36,10 +36,10 @@ for i in range(num_frequencies):
     freq = float(input(f"Digite a frequencia {i+1} em MHz: "))
     frequencies.append(freq * 1e6)  # Converte MHz para Hz
 
-# Lista para armazenar as medições de potencia
+# Lista para armazenar as medicoes de potencia
 power_measurements = []
 
-# Realiza as medições de potencia para cada frequencia
+# Realiza as medicoes de potencia para cada frequencia
 for frequency in frequencies:
     power = measure_power(frequency)
     power_measurements.append([frequency / 1e6, power])  # Converte de volta para MHz para salvar

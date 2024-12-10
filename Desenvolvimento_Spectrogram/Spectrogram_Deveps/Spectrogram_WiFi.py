@@ -3,6 +3,9 @@
 
 #Alguns commandos: 
 # INST:SEL SAN = Seleciona a funcao spectrumm Analizer
+from audioop import avgpp
+import dbm
+from msilib.schema import _Validation_records
 import re
 import time
 import csv
@@ -12,6 +15,7 @@ import os
 import tkinter as tk
 from tkinter import filedialog, messagebox, OptionMenu, StringVar
 from token import COMMA
+from RsInstrument.Internal.Instrument import Conv
 from RsInstrument.RsInstrument import RsInstrument
 
 TechnologyModulations = [
@@ -117,6 +121,7 @@ class MainProgram(tk.Tk):
 
     def Preset_Screen(self):
         self.CheckPot5G_bool = tk.BooleanVar()
+        self.CheckDen5G_bool = tk.BooleanVar()
         self.Check_Largura6dB = tk.BooleanVar()
         self.Check_Largura26dB = tk.BooleanVar()
         self.Check_PotPicMax = tk.BooleanVar()
@@ -129,6 +134,7 @@ class MainProgram(tk.Tk):
         self.CheckFreqFina = tk.BooleanVar()
         
         self.Check5G = tk.BooleanVar()
+        
         
         self.CheckPrint_Init = tk.BooleanVar()
         self.CheckPrint_Cent = tk.BooleanVar()
@@ -156,46 +162,51 @@ class MainProgram(tk.Tk):
         self.FrameTest_Select = LabelFrame(self.FramePreset, text="Selecao dos testes", padx=10, pady=10)
         self.FrameTest_Select.grid(row=1, column=0, sticky="w",columnspan=2, padx=(0,10)) 
 
-        # Potencia na saida do transmissor
+        # Potencia na saida do transmissor 5G
         self.Pot_5G_Label = Label(self.FrameTest_Select, text="Potencia na saida do transmissor", font=("Calibri","12"),state="disabled")
         self.Pot_5G_Label.grid(row=0, column=0, sticky="w", padx=(0,10))
         
         self.CheckPot_5G = tk.Checkbutton(self.FrameTest_Select,variable=self.CheckPot5G_bool,state="disabled")
         self.CheckPot_5G.grid(row=0, column=5, sticky="w")  
 
-
+        # Densisdade media de potencia 5G
+        self.Den_5G_Label = Label(self.FrameTest_Select, text="Densidade media de potencia ", font=("Calibri","12"),state="disabled")
+        self.Den_5G_Label.grid(row=1, column=0, sticky="w", padx=(0,10))
+        
+        self.CheckDen_5G = tk.Checkbutton(self.FrameTest_Select,variable=self.CheckDen5G_bool,state="disabled")
+        self.CheckDen_5G.grid(row=1, column=5, sticky="w")  
 
         # Largura de faixa a 6dBm  
         self.Larg6dB_Label = Label(self.FrameTest_Select, text="Largura de faixa a 6dB", font=("Calibri","12"))
-        self.Larg6dB_Label.grid(row=1, column=0, sticky="w", padx=(0,10))
+        self.Larg6dB_Label.grid(row=2, column=0, sticky="w", padx=(0,10))
         
         self.CheckLarg6dB = tk.Checkbutton(self.FrameTest_Select,variable=self.Check_Largura6dB)
-        self.CheckLarg6dB.grid(row=1, column=5, sticky="w")  
+        self.CheckLarg6dB.grid(row=2, column=5, sticky="w")  
 
         # Largura de faixa a 26dBm  
         self.Larg26dB_Label = Label(self.FrameTest_Select, text="Largura de faixa a 26dB", font=("Calibri","12"))
-        self.Larg26dB_Label.grid(row=2, column=0, sticky="w", padx=(0,10))
+        self.Larg26dB_Label.grid(row=3, column=0, sticky="w", padx=(0,10))
         
         self.CheckLarg26dB = tk.Checkbutton(self.FrameTest_Select,variable=self.Check_Largura26dB)
-        self.CheckLarg26dB.grid(row=2, column=5, sticky="w")  
+        self.CheckLarg26dB.grid(row=3, column=5, sticky="w")  
         # Potencia de pico maximo
         self.PotPic_Label = Label(self.FrameTest_Select, text="Potencia de pico maximo", font=("Calibri","12"))
-        self.PotPic_Label.grid(row=3, column=0, sticky="w", padx=(0,10))
+        self.PotPic_Label.grid(row=4, column=0, sticky="w", padx=(0,10))
         
         self.CheckPotPic = tk.Checkbutton(self.FrameTest_Select,variable=self.Check_PotPicMax)
-        self.CheckPotPic.grid(row=3, column=5, sticky="w")  
+        self.CheckPotPic.grid(row=4, column=5, sticky="w")  
         # Densidade
         self.Densidade_Label = Label(self.FrameTest_Select, text="Densidade Espectral", font=("Calibri","12"))
-        self.Densidade_Label.grid(row=4, column=0, sticky="w", padx=(0,10))
+        self.Densidade_Label.grid(row=5, column=0, sticky="w", padx=(0,10))
         
         self.CheckDensid_Esp = tk.Checkbutton(self.FrameTest_Select,variable=self.Check_Densidade_Spec)
-        self.CheckDensid_Esp.grid(row=4, column=5, sticky="w")  
+        self.CheckDensid_Esp.grid(row=5, column=5, sticky="w")  
         # Espurios
         self.Espurios_Label = Label(self.FrameTest_Select, text="Espurios", font=("Calibri","12"))
-        self.Espurios_Label.grid(row=5, column=0, sticky="w", padx=(0,10))
+        self.Espurios_Label.grid(row=6, column=0, sticky="w", padx=(0,10))
         
         self.CheckEspurios = tk.Checkbutton(self.FrameTest_Select,variable=self.Check_Esp)
-        self.CheckEspurios.grid(row=5, column=5, sticky="w")  
+        self.CheckEspurios.grid(row=6, column=5, sticky="w")  
         
 
         #Label Frequencia
@@ -305,8 +316,10 @@ class MainProgram(tk.Tk):
 
 
 
-    def PresetsforTest(self, Reset, RBW, UnitRBW, VBW, UnitVBW, SPAN, DISPLAY, REFLEV, ATT, SWEEP_COUNT,SWEEP_MODE, FREQ, TRACE, functions):
+    def PresetsforTest(self, Reset, RBW, UnitRBW, VBW, UnitVBW, SPAN, DISPLAY, ATT, SWEEP_COUNT,SWEEP_MODE, FREQ, TRACE,AVGMOD,DETECTOR, functions):
         TEMPO = int(self.TIMERSET.get())
+        SelectDetector = ["DET APE","DET POS","DET NEG","DET SAMP","DET RMS","DET AVER","DET QPE"]
+        AVG_MODS = ["","SENS:AVER1:TYPE LIN"]
         ListRBW = ["Hz", "kHz", "MHz", "GHz"]
         ListVBW = ["Hz", "kHz", "MHz", "GHz"]
         StatusRESET = ["*RST", ""]
@@ -323,12 +336,14 @@ class MainProgram(tk.Tk):
             StatusRESET[Reset],
             ListSWEEP_MODE[SWEEP_MODE],            
             ListSWEEP,
+            SelectDetector[DETECTOR],     
             f"BAND:VID {VBW} {ListVBW[UnitVBW]}",
             f"BAND {RBW} {ListRBW[UnitRBW]}",
             f"FREQ:CENT {FREQ} MHz",
             ListTRACE[TRACE],
+            AVG_MODS[AVGMOD], 
             f"INP:ATT {ATT} DB",
-            f"DISP:WIND:TRAC:Y:RLEV {REFLEV}",
+            f"DISP:WIND:TRAC:Y:RLEV {self.RefLevel_Preset}",
             f"FREQ:SPAN {SPAN} MHz",
             "INIT:IMM"
         ])
@@ -348,10 +363,15 @@ class MainProgram(tk.Tk):
             self.command_template(["CALC:MARK:FUNC:POW:SEL CPOW",f"SENS:POW:ACH:BWID:CHAN {self.Bandwidth} MHz",f"FREQ:SPAN {SPAN} MHz"])
             time.sleep(self.TimerCount_Void(self.TIMERSET.get()))
             self.Results = self.convert_hz_to_mhz(self.instr.query_str("CALC:MARK:FUNC:POW:RES? CPOW"))
-        if functions == 3:# Pico da densidade de potencia
+        if functions == 3:# Pico da densidade de potencia / Densidade em 5G (Uso da mesma funcao)
             self.instr.write_str("INIT;*WAI")
             self.command_template(["CALC:MARK:MAX"])
             self.Results = self.instr.query("CALC:MARK:Y?")
+        if functions == 4:# Potencia 5G
+            self.command_template(["CALC:MARK:FUNC:POW:SEL CPOW",f"SENS:POW:ACH:BWID:CHAN {self.Bandwidth} MHz",f"FREQ:SPAN {SPAN} MHz",f"BAND {RBW} {ListRBW[UnitRBW]}",f"BAND:VID {VBW} {ListVBW[UnitVBW]}",AVG_MODS[AVGMOD],SelectDetector[DETECTOR], ])
+            self.command_template(["INIT:CONT OFF"])
+            time.sleep(self.TimerCount_Void(self.TIMERSET.get()))
+            self.Results = self.converter_valor(self.instr.query_str("CALC:MARK:FUNC:POW:RES? CPOW"))
         self.instr.visa_timeout = 1000
         
     def Start(self):
@@ -368,14 +388,31 @@ class MainProgram(tk.Tk):
             if self.ip_val:
                 timetest = self.measure_execution_time(self.GeralTest,FreqStart,FreqCenter,FreqFinale,Print_Start,Print_Center,Print_Finale,Start,Center,Finale)
                 messagebox.showinfo("FIM",f"Concluido \n Tempo de teste: {timetest:.3f} Seg")
+                self.log_execution_time(self.ProtocolEntry.get(),timetest,self.save_dir)
             else:
                 messagebox.showwarning("Erro ao conectar no analisador","Insira o IP do analisador a ser conectado!")
         except Exception as e:
             messagebox.showerror("Erro", f"Falha ao na execucao do programa.\n{e}")
         
 
+    def ConversorRapdio(self,Val):
+        print(Val)
+        Tofloat = {Val:.3}
+        print(Tofloat)
+        Converter = Tofloat.replace(".",",")
+        print(Converter)
+        return Converter
+
+    def converter_valor(self,valor):
+        # Trunca o valor para 3 casas decimais e substitui o ponto por virgula
+        valor_convertido = "{:.3f}".format(float(valor)).replace('.', ',')
+        return valor_convertido
+
+
+
     def Start_Sequency(self,Freq,PrinScreen):
         self.Print_Screen_Func(0,False) #Ativa a pasta onde sera salvo os valores
+        self.ReferenceSelector(self.CheckRefLevel.get())
         modulation = self.TechnologyChose.get()
         if "(40)" in modulation:
             self.Bandwidth = 40.0
@@ -388,35 +425,43 @@ class MainProgram(tk.Tk):
         else:
             self.Bandwidth = 20.0
             
-        #funcao das opcoes marcadas:
-        if self.CheckPot5G_bool.get():
-            self.PresetsforTest(0,"1",2,"3",2,str(float(self.Bandwidth) * 1.5),0,"20",self.ReferenceSelector,100,0,Freq,2,2)
-            self.Print_Screen_Func("Potencia na saida do transmissor",PrinScreen)
-            self.save_test_results(f"{self.tech_path}\Potencia na saida do transmissor.csv",Freq,self.Results,0)
-            self.Results = None
+        #funcao das opcoes marcadas: 
         if self.Check_Largura6dB.get():
-            self.PresetsforTest(0,"100",1,"300",1,str(float(self.Bandwidth) * 1.5),0,"20",self.ReferenceSelector,0,1,Freq,1,0)
+            self.PresetsforTest(0,"100",1,"300",1,str(float(self.Bandwidth) * 1.5),0,"40",0,1,Freq,1,0,1,0)
             self.Print_Screen_Func("Largura de faixa a 6dB",PrinScreen)
             self.save_test_results(f"{self.tech_path}\Largura_6dB.csv",Freq,self.Results,0)      
             self.Results = None
         if self.Check_Largura26dB.get():
-            self.PresetsforTest(0,"100",1,"300",1,str(float(self.Bandwidth) * 1.5),0,"20",self.ReferenceSelector,0,1,Freq,1,1)  
+            self.PresetsforTest(0,"100",1,"300",1,str(float(self.Bandwidth) * 1.5),0,"40",0,1,Freq,1,0,1,1)  
             self.Print_Screen_Func("Largura de faixa a 26dB",PrinScreen)   
             self.save_test_results(f"{self.tech_path}\Largura_26dB.csv",Freq,self.Results,0)
             self.Results = None
         if self.Check_PotPicMax.get():
-            self.PresetsforTest(0,"1",2,"3",2,str(float(self.Bandwidth) * 1.5),0,"20",self.ReferenceSelector,0,1,Freq,1,2)             
+            self.PresetsforTest(0,"1",2,"3",2,str(float(self.Bandwidth) * 1.5),0,"40",0,1,Freq,1,0,1,2)             
             self.Print_Screen_Func("Potencia de pico",PrinScreen)
             self.save_test_results(f"{self.tech_path}\Potencia de pico maximo.csv",Freq,self.Results,1)
             self.Results = None
         if self.Check_Densidade_Spec.get():
-            self.PresetsforTest(0,"3",1,"10",1,str(float(self.Bandwidth) * 1.5),0,"20",self.ReferenceSelector,3,0,Freq,1,3)  
+            self.PresetsforTest(0,"3",1,"10",1,str(float(self.Bandwidth) * 1.5),0,"40",3,0,Freq,1,0,1,3)  
             self.Print_Screen_Func("Densidade espectral",PrinScreen)                    
-            self.save_test_results(f"{self.tech_path}\Densidade espectral de potencia.csv",Freq,f"{float(self.Results):.3f}",1)
+            self.save_test_results(f"{self.tech_path}\Densidade espectral de potencia.csv",Freq,f"{float(self.Results):.5}",1)
             self.Results = None
         if self.Check_Esp.get():
             messagebox.showinfo ("Desponivel em breve","Use a automacao Spectrogram_ESP!")
-           
+        if self.CheckPot5G_bool.get():
+            self.PresetsforTest(0,"1",2,"3",2,str(float(self.Bandwidth) * 1.5),0,"40",100,0,Freq,2,1,4,4)
+            self.Print_Screen_Func("Potencia na saida do transmissor",PrinScreen)
+            self.save_test_results(f"{self.tech_path}\Potencia na saida do transmissor.csv",Freq,self.Results,1)
+            self.Results = None                   
+        if self.CheckDen5G_bool.get():
+            self.PresetsforTest(0,"1",2,"3",2,str(float(self.Bandwidth) * 1.5),0,"40",100,0,Freq,2,1,4,4)
+            self.instr.write_str("INIT;*WAI")
+            self.command_template(["CALC:MARK:MAX"])
+            self.Results = self.instr.query("CALC:MARK:Y?")
+            Dot_to_virgula = self.Results.replace(".",",")
+            self.save_test_results(f"{self.tech_path}\Densidade media de potencia.csv",Freq,f"{Dot_to_virgula:.5}",1)
+            self.Results = None    
+            
     def measure_execution_time(self, func, *args, **kwargs): #Retorna o tempo de execucao da operacao total
         if not callable(func):
             raise ValueError("O parametro 'func' deve ser uma funcao ou metodo chamavel.")
@@ -432,11 +477,11 @@ class MainProgram(tk.Tk):
         print(f"Tempo de execucao: {execution_time:.3f} segundos")
         return execution_time
     
-    def ReferenceSelector(self):
-        if self.CheckRefLevel:
-            return self.RefLevel.get()
-        else:
-            return "40 dBm"
+    def ReferenceSelector(self,State):
+        if State:
+            self.RefLevel_Preset = self.RefLevel.get()
+        elif not State:
+            self.RefLevel_Preset = "30 dbm"
 
     def GeralTest(self,StartFreq,CenterFreq,FinaleFreq,PrintStart,PrintCenter,PrintFinale,ValueStart,ValueCenter,ValueFinale):
         if not ValueStart:
@@ -488,6 +533,8 @@ class MainProgram(tk.Tk):
         if self.Check5G.get():
             self.CheckPot_5G.config(state="normal")
             self.Pot_5G_Label.config(state="normal")
+            self.CheckDen_5G.config(state="normal")            
+            self.Den_5G_Label.config(state="normal")
             self.CheckLarg6dB.config(state="disabled")
             self.CheckLarg26dB.config(state="disabled")
             self.CheckPotPic.config(state="disabled")
@@ -507,10 +554,11 @@ class MainProgram(tk.Tk):
             self.CheckEspurios.config(state="normal")
             self.CheckPot_5G.config(state="disabled")
             self.Pot_5G_Label.config(state="disabled")
+            self.CheckDen_5G.config(state="disabled")
+            self.Den_5G_Label.config(state="disabled")            
             self.CheckPot5G_bool.set(False)
+            self.CheckDen5G_bool.set(False)
             
-
-
     def TimerCount_Void(self,Switch):
         TIMERSET = self.Timer_Entry.get()
         if Switch:
@@ -518,6 +566,45 @@ class MainProgram(tk.Tk):
         else:
             return 1.5
 
+    def log_execution_time(self,protocolo, tempo_execucao, diretorio):
+        """
+        Grava tempos de execucao em um arquivo CSV com o nome [protocolo]_Tempos_de_Teste.csv.
+
+        :param protocolo: Nome do protocolo utilizado.
+        :param tempo_execucao: Tempo de execucao em segundos.
+        :param diretorio: Caminho do diretorio onde o arquivo sera salvo.
+        """
+        # Nome do arquivo
+        nome_arquivo = os.path.join(diretorio, f"{protocolo}_Tempos_de_Teste.csv")
+
+        # Obter data e hora atuais
+        agora = datetime.now()
+        data_atual = agora.strftime("%d/%m/%Y")
+        hora_atual = agora.strftime("%H:%M")
+
+        # Verificar se o arquivo ja existe
+        arquivo_existe = os.path.isfile(nome_arquivo)
+
+        # Abrir o arquivo para escrita (adiciona dados caso o arquivo ja exista)
+        with open(nome_arquivo, mode='a', newline='', encoding='utf-8') as csvfile:
+            writer = csv.writer(csvfile, delimiter=';')
+
+            # Escrever cabecalho se o arquivo for novo
+            if not arquivo_existe:
+                writer.writerow(["Index", "Tempo [Seg]", "Data", "Hora"])
+
+            # Obter o proximo indice
+            if arquivo_existe:
+                with open(nome_arquivo, mode='r', encoding='utf-8') as readfile:
+                    index = sum(1 for _ in readfile) - 1  # Conta linhas e subtrai o cabecalho
+            else:
+                index = 0
+
+            # Escrever a nova linha com dados
+            index += 1
+            writer.writerow([index, f"{tempo_execucao:.3f}".replace('.', ','), data_atual, hora_atual])
+
+        print(f"Dados salvos no arquivo: {nome_arquivo}")
 
     def convert_hz_to_mhz(self,hz_value_str):
         # Remove separadores de milhar (por exemplo, virgulas ou pontos)
