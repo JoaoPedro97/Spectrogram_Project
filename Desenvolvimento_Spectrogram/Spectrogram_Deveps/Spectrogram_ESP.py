@@ -3,6 +3,7 @@ from tkinter import *
 import os
 import tkinter as tk
 from tkinter import filedialog, messagebox, OptionMenu, StringVar
+from xmlrpc.client import boolean
 from RsInstrument.RsInstrument import RsInstrument
 
 # Dicionario que mapeia tecnologias para seus arrays de modulacoes
@@ -25,10 +26,25 @@ TechnologyModulations = {
     "ZigFox": ["DBPSK","GFSK"]
 }
 
+REF_LEV = [
+    "-10 dBm", "-5 dBm", "0 dBm",
+    "5 dBm", "10 dBm", "15 dBm",
+    "20 dBm", "25 dBm", "30 dBm",
+    "35 dBm", "40 dBm", "45 dBm"
+    ]
+
+ATT = [
+    "5 DB","10 DB","15 DB",
+    "20 DB","25 DB","30 DB",
+    "35 DB","40 DB","45 DB",
+    "50 DB","55 DB","60 DB",
+    "65 DB","70 DB"
+    ]
+
 class MainProgram(tk.Tk):  # Herdando de Tk em vez de Toplevel
     def __init__(self):
         super().__init__()  # Inicializa o Tk
-        self.geometry("450x550")
+        self.geometry("450x650")
         self.title("Spectrogram ESP")
         
         self.create_widgets_TestConnection()
@@ -90,12 +106,17 @@ class MainProgram(tk.Tk):  # Herdando de Tk em vez de Toplevel
 
     def ConfiguacoesEspurios(self):
         self.CheckState_5G = tk.BooleanVar()
+        self.CheckTIMER = tk.BooleanVar()
 
         self.TechnologyChose = StringVar(self)
         self.TechnologyChose.set("Wi-Fi")  # Valor inicial
 
         self.ModulationChose = StringVar(self)
         self.ModulationChose.set("")  # Inicialmente vazio
+        self.RefLevChose = StringVar(self)
+        self.RefLevChose.set("30 dBm") # Valor de preset
+        self.AttChose = StringVar()
+        self.AttChose.set("40 DB")
         
         self.FrameConfig = LabelFrame(text="Configuracao para espurios", padx=10, pady=10)
         self.FrameConfig.pack(side=TOP)        
@@ -124,35 +145,59 @@ class MainProgram(tk.Tk):  # Herdando de Tk em vez de Toplevel
         self.Check5G = tk.Checkbutton(self.FrameConfig,variable=self.CheckState_5G)
         self.Check5G.grid(row=3, column=1, sticky="w")  
 
+        self.SelectRefLev_Label = Label(self.FrameConfig, text="Selecione o Reference Level: ", font=("Calibri","12"))
+        self.SelectRefLev_Label.grid(row=4, column=0, columnspan=2, sticky="w", padx=(0, 10))       
+
+        self.SelectRefLev = OptionMenu(self.FrameConfig, self.RefLevChose, *REF_LEV)
+        self.SelectRefLev.grid(row=4, column=1, sticky="e", padx=(0, 10))
+
+        self.SelectAtt_Label = Label(self.FrameConfig, text="Selecione a atenuacao (Att): ", font=("Calibri","12"))
+        self.SelectAtt_Label.grid(row=5, column=0, columnspan=2, sticky="w", padx=(0, 10))       
+
+        self.SelectAtt = OptionMenu(self.FrameConfig, self.AttChose, *ATT)
+        self.SelectAtt.grid(row=5, column=1, sticky="e", padx=(0, 10))
+
+        self.SetTIMER_Label = Label(self.FrameConfig, text="Tempo entre as medidas: ", font=("Calibri","12"))
+        self.SetTIMER_Label.grid(row=6, column=0, columnspan=2, sticky="w", padx=(0, 10))  
+
+        self.Timer_Entry = Entry(self.FrameConfig, font=("Arial", "10"), width= 7)
+        self.Timer_Entry.grid(row=6, column=1,sticky="w", padx=(0,0)) 
+
+        self.UnidadeSeg_Label = Label(self.FrameConfig, text="Seg", font=("Calibri","12"))
+        self.UnidadeSeg_Label.grid(row=6, column=1, sticky="w", padx=(37, 0)) 
+
+        self.CheckTIMER_set = tk.Checkbutton(self.FrameConfig,variable=self.CheckTIMER)
+        self.CheckTIMER_set.grid(row=6, column=1, sticky="w", padx=(67,1))  
+
         self.SetFreqStartLabel = Label(self.FrameConfig, text="Informe a frequencia Inicial e Final da amostra: ", font=("Calibri","12"))
-        self.SetFreqStartLabel.grid(row=4, column=0, columnspan=2, sticky="w", padx=(0, 10))
+        self.SetFreqStartLabel.grid(row=7, column=0, columnspan=2, sticky="w", padx=(0, 10))
         
         self.StartFreqLabel = Label(self.FrameConfig, text="Freq.Inicial: ", font=("Calibri","12"))
-        self.StartFreqLabel.grid(row=5, column=0, sticky="w", padx=(0,5))
+        self.StartFreqLabel.grid(row=8, column=0, sticky="w", padx=(0,5))
       
         self.StartEntry = Entry(self.FrameConfig, font=("Arial", "10"), width= 7)
-        self.StartEntry.grid(row=5, column=0,sticky="w", padx=(85,0))      
+        self.StartEntry.grid(row=8, column=0,sticky="w", padx=(85,0))      
         
         self.StartMHz_Label = Label(self.FrameConfig, text="MHz", font=("Calibri","12"))
-        self.StartMHz_Label.grid(row=5, column=0, sticky="w", padx=(127,0))
+        self.StartMHz_Label.grid(row=8, column=0, sticky="w", padx=(127,0))
 
         self.FinalFreqLabel = Label(self.FrameConfig, text="Freq.Final: ", font=("Calibri","12"))
-        self.FinalFreqLabel.grid(row=5, column=1, sticky="w", padx=(0,5))
+        self.FinalFreqLabel.grid(row=8, column=1, sticky="w", padx=(0,5))
 
         self.FinalEntry = Entry(self.FrameConfig, font=("Arial", "10"), width= 7)
-        self.FinalEntry.grid(row=5, column=1,sticky="w", padx=(80,0))   
+        self.FinalEntry.grid(row=8, column=1,sticky="w", padx=(80,0))   
         
         self.FinalMHz_Label = Label(self.FrameConfig, text="MHz", font=("Calibri","12"))
-        self.FinalMHz_Label.grid(row=5, column=1, sticky="w", padx=(127,0))
+        self.FinalMHz_Label.grid(row=8, column=1, sticky="w", padx=(127,0))
         
         self.PrintFileLabel = Label(self.FrameConfig, text="Selecione a pasta para os prints", font=("Calibri","12"))
-        self.PrintFileLabel.grid(row=6, column=0, columnspan=2, sticky="w", padx=(0, 10))
+        self.PrintFileLabel.grid(row=9, column=0, columnspan=2, sticky="w", padx=(0, 10))
         
         self.PathFileShow = Entry(self.FrameConfig, font=("Arial", "10"), width= 10)
-        self.PathFileShow.grid(row=7, column=0, columnspan=2, sticky="we", padx=(0, 10))
+        self.PathFileShow.grid(row=10, column=0, columnspan=2, sticky="we", padx=(0, 10))
         
         self.PathFileButton = Button(self.FrameConfig, text="Selecione a pasta", command=self.Print_screen_File, font=("Calibri", "10"), width=15)
-        self.PathFileButton.grid(row=8, column=0, columnspan=2, sticky="we", padx=(0, 10))
+        self.PathFileButton.grid(row=11, column=0, columnspan=2, sticky="we", padx=(0, 10))
         
     def LabelStartSequence(self):
         self.FrameStart = LabelFrame(text="Inicializar Teste", padx=10, pady=10)
@@ -254,16 +299,25 @@ class MainProgram(tk.Tk):  # Herdando de Tk em vez de Toplevel
             "*RST",
             f"{RBW}",
             f"{VBW}",
-            "DISP:WIND:TRAC:Y:RLEV 20dBm",
-            "INP:ATT 40 DB",
+            f"DISP:WIND:TRAC:Y:RLEV {self.RefLevChose.get()}",
+            f"INP:ATT {self.AttChose.get()}",
             "DISP:WIND:TRAC:MODE MAXH",
             f"{Stepper_Start}",
             f"{Stepper_Stop}"
         ])        
-        time.sleep(5)
-        self.command_template(["CALC:MARK1:MAX",f"{Command_Marker_Start}",f"{Command_Marker_Finish}"])
+        time.sleep(self.TimerCount_Void(self.CheckTIMER.get()))
+        self.command_template(["DISP:WIND:TRAC:MODE VIEW","CALC:MARK1:MAX",f"{Command_Marker_Start}"])
+        time.sleep(1)
+        self.command_template([f"{Command_Marker_Finish}"])
         self.Print_Screen_Func(Name_Print)
         
+    def TimerCount_Void(self,Switch):
+        TIMERSET = self.Timer_Entry.get()
+        if Switch:
+            return int(TIMERSET)
+        else:
+            return 0.5
+
     def command_template(self, commands):
         for command in commands:
             self.instr.write_str(command)
