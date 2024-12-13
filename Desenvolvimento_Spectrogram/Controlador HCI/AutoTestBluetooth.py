@@ -13,7 +13,7 @@ from logging import root
 from tkinter import ttk
 from token import NAME
 import serial
-import serial.tools.list_ports
+import serial.tools.list_ports 
 from RsInstrument.RsInstrument import RsInstrument
 
 

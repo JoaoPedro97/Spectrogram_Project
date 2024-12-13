@@ -330,7 +330,7 @@ class MainProgram(tk.Tk):
         ]
         ListSWEEP_MODE = ["INIT:CONT OFF; :INIT","INIT:CONT ON"]
         ListSWEEP = f"SENS:SWE:COUN {SWEEP_COUNT}"
-        self.instr.visa_timeout = 30000  # Timeout de 60 segundos
+        self.instr.visa_timeout = 60000  # Timeout de 60 segundos
         self.command_template([
             StatusDisplay[DISPLAY],
             StatusRESET[Reset],
@@ -372,7 +372,7 @@ class MainProgram(tk.Tk):
             self.command_template(["INIT:CONT OFF"])
             time.sleep(self.TimerCount_Void(self.TIMERSET.get()))
             self.Results = self.converter_valor(self.instr.query_str("CALC:MARK:FUNC:POW:RES? CPOW"))
-        self.instr.visa_timeout = 1000
+        
         
     def Start(self):
         FreqStart = self.Frequencia_Inicial_Entry.get()         #
@@ -393,7 +393,7 @@ class MainProgram(tk.Tk):
                 messagebox.showwarning("Erro ao conectar no analisador","Insira o IP do analisador a ser conectado!")
         except Exception as e:
             messagebox.showerror("Erro", f"Falha ao na execucao do programa.\n{e}")
-        
+        self.instr.visa_timeout = 1000
 
     def ConversorRapdio(self,Val):
         print(Val)
